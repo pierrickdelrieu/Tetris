@@ -29,6 +29,7 @@
 		EDCB211324289B7200CAD30C /* Note de cadrage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Note de cadrage.pdf"; sourceTree = "<group>"; };
 		EDCB211424289CF400CAD30C /* fonctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fonctions.h; sourceTree = "<group>"; };
 		EDCB211524289CF400CAD30C /* fonctions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fonctions.c; sourceTree = "<group>"; };
+		EDCB211724289E4500CAD30C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +46,7 @@
 		EDCB210024289AAC00CAD30C = {
 			isa = PBXGroup;
 			children = (
+				EDCB211724289E4500CAD30C /* README.md */,
 				EDCB211324289B7200CAD30C /* Note de cadrage.pdf */,
 				EDCB210B24289AAC00CAD30C /* source */,
 				EDCB210A24289AAC00CAD30C /* Products */,
