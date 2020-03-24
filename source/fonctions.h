@@ -10,13 +10,27 @@
 #define fonctions_h
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+//Code ascii
+#define POINT 46
+#define A 65 //le code ascii des lettres en majuscules est dans l'ordre A+i
+#define a 97 //le code ascii des lettres en minuscules est dans l'ordre a+i
+#define ESPACE 32
+#define COTE_LATERAL 124 // |
+#define COTE_TRANSVERSAL 61 // =
 
 
 
+//..................PLATEAU...................
+#define TAILLE_MIN_PLATEAU 21
+int** creation_plateau_losange(int taille);
+void affichage_plateau(int** plateau, int taille);
 
 
-
-
+//....................MENU....................
+void saisie_taille_losange(int* taille);
 
 
 

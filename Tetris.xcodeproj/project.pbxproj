@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EDCB210D24289AAC00CAD30C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCB210C24289AAC00CAD30C /* main.c */; };
-		EDCB211624289CF400CAD30C /* fonctions.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCB211524289CF400CAD30C /* fonctions.c */; };
+		EDCB211624289CF400CAD30C /* plateau.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCB211524289CF400CAD30C /* plateau.c */; };
+		EDCB212F242A9A2500CAD30C /* menu.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCB212E242A9A2500CAD30C /* menu.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,12 +25,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		EDCB210924289AAC00CAD30C /* Teris */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Teris; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDCB210924289AAC00CAD30C /* Tetris */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tetris; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDCB210C24289AAC00CAD30C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EDCB211324289B7200CAD30C /* Note de cadrage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Note de cadrage.pdf"; sourceTree = "<group>"; };
 		EDCB211424289CF400CAD30C /* fonctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fonctions.h; sourceTree = "<group>"; };
-		EDCB211524289CF400CAD30C /* fonctions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fonctions.c; sourceTree = "<group>"; };
+		EDCB211524289CF400CAD30C /* plateau.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = plateau.c; sourceTree = "<group>"; };
 		EDCB211724289E4500CAD30C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EDCB212E242A9A2500CAD30C /* menu.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = menu.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,7 @@
 		EDCB210A24289AAC00CAD30C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EDCB210924289AAC00CAD30C /* Teris */,
+				EDCB210924289AAC00CAD30C /* Tetris */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,7 +68,8 @@
 			children = (
 				EDCB210C24289AAC00CAD30C /* main.c */,
 				EDCB211424289CF400CAD30C /* fonctions.h */,
-				EDCB211524289CF400CAD30C /* fonctions.c */,
+				EDCB211524289CF400CAD30C /* plateau.c */,
+				EDCB212E242A9A2500CAD30C /* menu.c */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -74,9 +77,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EDCB210824289AAC00CAD30C /* Teris */ = {
+		EDCB210824289AAC00CAD30C /* Tetris */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EDCB211024289AAC00CAD30C /* Build configuration list for PBXNativeTarget "Teris" */;
+			buildConfigurationList = EDCB211024289AAC00CAD30C /* Build configuration list for PBXNativeTarget "Tetris" */;
 			buildPhases = (
 				EDCB210524289AAC00CAD30C /* Sources */,
 				EDCB210624289AAC00CAD30C /* Frameworks */,
@@ -86,9 +89,9 @@
 			);
 			dependencies = (
 			);
-			name = Teris;
+			name = Tetris;
 			productName = "\"tetris\"";
-			productReference = EDCB210924289AAC00CAD30C /* Teris */;
+			productReference = EDCB210924289AAC00CAD30C /* Tetris */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EDCB210424289AAC00CAD30C /* Build configuration list for PBXProject "Teris" */;
+			buildConfigurationList = EDCB210424289AAC00CAD30C /* Build configuration list for PBXProject "Tetris" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EDCB210824289AAC00CAD30C /* Teris */,
+				EDCB210824289AAC00CAD30C /* Tetris */,
 			);
 		};
 /* End PBXProject section */
@@ -129,7 +132,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDCB210D24289AAC00CAD30C /* main.c in Sources */,
-				EDCB211624289CF400CAD30C /* fonctions.c in Sources */,
+				EDCB211624289CF400CAD30C /* plateau.c in Sources */,
+				EDCB212F242A9A2500CAD30C /* menu.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +268,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EDCB210424289AAC00CAD30C /* Build configuration list for PBXProject "Teris" */ = {
+		EDCB210424289AAC00CAD30C /* Build configuration list for PBXProject "Tetris" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EDCB210E24289AAC00CAD30C /* Debug */,
@@ -273,7 +277,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EDCB211024289AAC00CAD30C /* Build configuration list for PBXNativeTarget "Teris" */ = {
+		EDCB211024289AAC00CAD30C /* Build configuration list for PBXNativeTarget "Tetris" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EDCB211124289AAC00CAD30C /* Debug */,

@@ -7,9 +7,21 @@
 //
 
 #include <stdio.h>
+#include "fonctions.h"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+int main()
+{
+    int** plateau = NULL; //initialisation du pointeur du tableau 2D
+    int taille; //taille plateau saisie par l'utilisateur
+    
+    //Saisie sécurisée taille du tableau
+    saisie_taille_losange(&taille);
+    
+    
+    plateau = creation_plateau_losange(taille);
+    
+   
+    affichage_plateau(plateau,taille);
+ 
     return 0;
 }
