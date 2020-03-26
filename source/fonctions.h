@@ -24,13 +24,15 @@
 
 
 //..................PLATEAU...................
-#define TAILLE_MIN_PLATEAU 21
+#define TAILLE_MIN_PLATEAU 19
 int** creation_plateau_losange(int taille);
-void affichage_plateau(int** plateau, int taille);
+int** creation_plateau_triangle(int taille);
+int** creation_plateau_cercle(int taille);
+void affichage_plateau(int** plateau, int hauteur, int largeur);
 
 
 //....................MENU....................
-void saisie_taille_losange(int* taille);
+void saisie_taille_losange_ou_triangle(int* taille);
 
 
 

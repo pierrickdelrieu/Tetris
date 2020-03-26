@@ -100,7 +100,7 @@
 		EDCB210124289AAC00CAD30C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Pierrick Delrieu";
 				TargetAttributes = {
 					EDCB210824289AAC00CAD30C = {
@@ -252,6 +252,7 @@
 		EDCB211124289AAC00CAD30C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -260,6 +261,7 @@
 		EDCB211224289AAC00CAD30C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

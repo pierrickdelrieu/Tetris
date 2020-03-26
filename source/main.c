@@ -6,7 +6,6 @@
 //  Copyright © 2020 Pierrick Delrieu. All rights reserved.
 //
 
-#include <stdio.h>
 #include "fonctions.h"
 
 int main()
@@ -15,13 +14,13 @@ int main()
     int taille; //taille plateau saisie par l'utilisateur
     
     //Saisie sécurisée taille du tableau
-    saisie_taille_losange(&taille);
+    saisie_taille_losange_ou_triangle(&taille);
     
     
-    plateau = creation_plateau_losange(taille);
+    plateau = creation_plateau_triangle(taille);
     
    
-    affichage_plateau(plateau,taille);
+    affichage_plateau(plateau,taille/2,taille);
  
     return 0;
 }
