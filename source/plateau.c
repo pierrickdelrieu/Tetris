@@ -89,7 +89,7 @@ int** creation_plateau_cercle(int taille)
         for(j=0; j<taille; j++)
         {
             //haut droit; haut gauche; bas gauche; bas droit
-            if((j > (taille/2) + i) || (j < (taille/2) - i))
+            if((j > (taille/5) + i) || (j < (taille/5) - i) || (j < i - (taille/5)) ||  (j >= (taille/5) + (taille - i)))
             {
                 plateau[i][j] = ESPACE;
             }
