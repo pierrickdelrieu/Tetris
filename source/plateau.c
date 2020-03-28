@@ -8,6 +8,8 @@
 
 #include "fonctions.h"
 
+
+
 int** creation_plateau_losange(int taille)
 {
     int i,j; //compteur lignes et colonnes
@@ -53,11 +55,12 @@ int** creation_plateau_triangle(int taille)
     }
     
     //Initialisation d'un tableau remplit de point et d'espace pour former un losange
-    for(i=0; i<(taille/2); i++) //(taille / 2) (necessaire pour un bon affichage du triangle)
+    for(i=0; i<taille; i++)
     {
         for(j=0; j<taille; j++)
         {
-            if((j > (taille/2) + i) || (j < (taille/2) - i)) //haut droit; haut gauche;
+            //haut droit; haut gauche; bas gauche; bas droit affichage d'espace
+            if((j > (taille/2) + i) || (j < (taille/2) - i) || (j < i - (taille/2)) ||  (j >= (taille/2) + (taille - i)))
             {
                 plateau[i][j] = ESPACE;
             }
@@ -67,7 +70,7 @@ int** creation_plateau_triangle(int taille)
             }
         }
     }
-    
+       
     return (plateau); //retour de l'adresse du tableau 2D
 }
 
@@ -75,7 +78,20 @@ int** creation_plateau_cercle(int taille)
 {
     int i,j; //compteur lignes et colonnes
     int** plateau = NULL; //retour = adresse du tableau 2D créé
+    int taille_espace; //taille des espaces dans chaques angles pour former le cercle
     
+    //Attribution de la taille des espaces en fonction de la taille demander par l'utilisateur
+    if((taille == 19) || (taille == 21))
+    {
+        taille_espace = 3;
+    }
+
+    else // si taille = 23 ou 25
+    {
+        taille_espace = 4;
+    }
+    
+    //Allocation du plateau
     plateau = (int**) malloc(taille * sizeof(int*)); //création du tableau de référence contenant les adresses de chaques lignes
     
     for(i=0; i<taille; i++)
@@ -84,15 +100,27 @@ int** creation_plateau_cercle(int taille)
     }
     
     //Initialisation d'un tableau remplit de point et d'espace pour former un losange
-    for(i=0; i<(taille/2); i++)
+    for(i=0; i<taille; i++)
     {
         for(j=0; j<taille; j++)
         {
-            //haut droit; haut gauche; bas gauche; bas droit
-            if((j > (taille/5) + i) || (j < (taille/5) - i) || (j < i - (taille/5)) ||  (j >= (taille/5) + (taille - i)))
+            //haut droit; haut gauche; bas gauche; bas droit - affichage d'espace
+            if((i<taille_espace) && ((j > taille -taille_espace+ i-1) || (j < taille_espace-i)))
             {
                 plateau[i][j] = ESPACE;
             }
+//            else if((i<taille_espace) && (j < taille_espace-i))
+//            {
+//                plateau[i][j] = ESPACE;
+//            }
+            else if((i>taille - taille_espace-1) && ((j < i-taille+taille_espace+1) || (j > taille -taille_espace-1 +(taille-i-1))))
+            {
+                plateau[i][j] = ESPACE;
+            }
+//            else if((i>taille - taille_espace-1) && (j > taille -taille_espace-1 +(taille-i-1)))
+//            {
+//                plateau[i][j] = ESPACE;
+//            }
             else
             {
                 plateau[i][j] = POINT;
