@@ -37,6 +37,11 @@ int** creation_plateau_triangle(int taille);
 int** creation_plateau_cercle(int taille);
 void affichage_plateau(int** plateau, int hauteur, int largeur);
 
+//....................BLOC.....................
+#define CASE_VIDE 0
+#define CARRE 1
+
+
 
 //....................MENU....................
 void ecran_accueil(void);
