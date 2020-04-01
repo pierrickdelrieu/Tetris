@@ -32,6 +32,10 @@
 		EDCB211524289CF400CAD30C /* plateau.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = plateau.c; sourceTree = "<group>"; };
 		EDCB211724289E4500CAD30C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDCB212E242A9A2500CAD30C /* menu.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = menu.c; sourceTree = "<group>"; };
+		EDD9EDEB243500E0007BF8F6 /* blocs_communs.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = blocs_communs.xlsx; sourceTree = "<group>"; };
+		EDD9EDEC2435010D007BF8F6 /* blocs_communs.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_communs.csv; sourceTree = "<group>"; };
+		EDD9EDED24350476007BF8F6 /* blocs_cercle.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_cercle.csv; sourceTree = "<group>"; };
+		EDD9EDEE24350625007BF8F6 /* blocs_cercle.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = blocs_cercle.xlsx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,10 @@
 		EDD9EDEA2434ED12007BF8F6 /* blocs */ = {
 			isa = PBXGroup;
 			children = (
+				EDD9EDEB243500E0007BF8F6 /* blocs_communs.xlsx */,
+				EDD9EDEC2435010D007BF8F6 /* blocs_communs.csv */,
+				EDD9EDED24350476007BF8F6 /* blocs_cercle.csv */,
+				EDD9EDEE24350625007BF8F6 /* blocs_cercle.xlsx */,
 			);
 			path = blocs;
 			sourceTree = "<group>";
