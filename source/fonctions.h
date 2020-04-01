@@ -50,7 +50,16 @@ void choix_politique_suggestion_blocs(int* choix);
 
 
 
-
+//...................CONST....................
+#ifdef _WIN32
+#define OPERATING_SYSTEM "win"
+#elif __linux__
+#define OPERATING_SYSTEM "linux"
+#elif __APPLE__
+#define OPERATING_SYSTEM "mac"
+#else
+#define OPERATING_SYSTEM "unk"
+#endif
 
 
 #endif /* fonctions_h */

@@ -157,9 +157,9 @@ void choix_politique_suggestion_blocs(int* choix)
     }while((*choix != 1) && (*choix != 2));;
 }
 
-void supr_console()
+void supr_console(void)
 {
-    system("clear");
+    system(OPERATING_SYSTEM == "win" ? "cls" : "clear");
 }
 
 
