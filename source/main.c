@@ -27,19 +27,19 @@ int main()
     choix_politique_suggestion_blocs(&choix_suggestion_blocs);
     
     //Allocation en fonction du choix de la forme du plateau
-    if(choix_forme == PLATEAU_CERCLE)
+    if(choix_forme == 1) //cercle
     {
         plateau = creation_plateau_cercle(taille);
         hauteur = taille;
         largeur = taille;
     }
-    else if (choix_forme == PLATEAU_LOSANGE)
+    else if (choix_forme == 2) //losange
     {
         plateau = creation_plateau_losange(taille);
         hauteur = taille;
         largeur = taille;
     }
-    else //choix forme == PLATEAU_TRIANGLE
+    else //triangle
     {
         plateau = creation_plateau_triangle(taille);
         hauteur = taille/2;

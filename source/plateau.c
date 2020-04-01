@@ -30,11 +30,11 @@ int** creation_plateau_losange(int taille)
             //haut droit; haut gauche; bas gauche; bas droit affichage d'espace
             if((j > (taille/2) + i) || (j < (taille/2) - i) || (j < i - (taille/2)) ||  (j >= (taille/2) + (taille - i)))
             {
-                plateau[i][j] = ESPACE;
+                plateau[i][j] = CASE_VIDE_INJOUABLE;
             }
             else
             {
-                plateau[i][j] = POINT;
+                plateau[i][j] = CASE_VIDE_JOUABLE;
             }
         }
     }
@@ -62,11 +62,11 @@ int** creation_plateau_triangle(int taille)
             //haut droit; haut gauche; bas gauche; bas droit affichage d'espace
             if((j > (taille/2) + i) || (j < (taille/2) - i) || (j < i - (taille/2)) ||  (j >= (taille/2) + (taille - i)))
             {
-                plateau[i][j] = ESPACE;
+                plateau[i][j] = CASE_VIDE_INJOUABLE;
             }
             else
             {
-                plateau[i][j] = POINT;
+                plateau[i][j] = CASE_VIDE_JOUABLE;
             }
         }
     }
@@ -107,7 +107,7 @@ int** creation_plateau_cercle(int taille)
             //haut droit; haut gauche; bas gauche; bas droit - affichage d'espace
             if((i<taille_espace) && ((j > taille -taille_espace+ i-1) || (j < taille_espace-i)))
             {
-                plateau[i][j] = ESPACE;
+                plateau[i][j] = CASE_VIDE_INJOUABLE;
             }
 //            else if((i<taille_espace) && (j < taille_espace-i))
 //            {
@@ -115,7 +115,7 @@ int** creation_plateau_cercle(int taille)
 //            }
             else if((i>taille - taille_espace-1) && ((j < i-taille+taille_espace+1) || (j > taille -taille_espace-1 +(taille-i-1))))
             {
-                plateau[i][j] = ESPACE;
+                plateau[i][j] = CASE_VIDE_INJOUABLE;
             }
 //            else if((i>taille - taille_espace-1) && (j > taille -taille_espace-1 +(taille-i-1)))
 //            {
@@ -123,7 +123,7 @@ int** creation_plateau_cercle(int taille)
 //            }
             else
             {
-                plateau[i][j] = POINT;
+                plateau[i][j] = CASE_VIDE_JOUABLE;
             }
         }
     }
@@ -182,7 +182,18 @@ void affichage_plateau(int** plateau, int hauteur, int largeur)
             //Affichage du contenu du plateau
             else
             {
-                printf("%c ",plateau[i-2][j-2]);
+                if(plateau[i-2][j-2] == CASE_VIDE_JOUABLE)
+                {
+                    printf("%c ",POINT);
+                }
+                else if(plateau[i-2][j-2] == CASE_VIDE_INJOUABLE)
+                {
+                    printf("%c ",ESPACE);
+                }
+                else if(plateau[i-2][j-2] == CASE_PLEINE)
+                {
+                    printf("◼︎ "); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
+                }
             }
         }
         printf("\n"); //retour à la ligne après l'affichage d'une ligne

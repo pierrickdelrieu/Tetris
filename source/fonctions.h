@@ -29,15 +29,16 @@
 
 //..................PLATEAU...................
 #define TAILLE_MIN_PLATEAU 19
-#define PLATEAU_CERCLE 1
-#define PLATEAU_LOSANGE 2
-#define PLATEAU_TRIANGLE 3
+#define CASE_VIDE_JOUABLE 0
+#define CASE_PLEINE 1
+#define CASE_VIDE_INJOUABLE -1
 int** creation_plateau_losange(int taille);
 int** creation_plateau_triangle(int taille);
 int** creation_plateau_cercle(int taille);
 void affichage_plateau(int** plateau, int hauteur, int largeur);
 
 //....................BLOC.....................
+
 
 
 
@@ -50,15 +51,15 @@ void choix_politique_suggestion_blocs(int* choix);
 
 
 
-//...................CONST....................
+//...................SYSTEME D'EXLOITATION....................
 #ifdef _WIN32
-#define OPERATING_SYSTEM "win"
+#define OPERATING_SYSTEM "win" //windows
 #elif __linux__
 #define OPERATING_SYSTEM "linux"
 #elif __APPLE__
 #define OPERATING_SYSTEM "mac"
 #else
-#define OPERATING_SYSTEM "unk"
+#define OPERATING_SYSTEM "unk" //systéme inconnu
 #endif
 
 

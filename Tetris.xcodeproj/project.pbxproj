@@ -50,6 +50,7 @@
 			children = (
 				EDCB211724289E4500CAD30C /* README.md */,
 				EDCB211324289B7200CAD30C /* Note de cadrage.pdf */,
+				EDD9EDEA2434ED12007BF8F6 /* blocs */,
 				EDCB210B24289AAC00CAD30C /* source */,
 				EDCB210A24289AAC00CAD30C /* Products */,
 			);
@@ -72,6 +73,13 @@
 				EDCB212E242A9A2500CAD30C /* menu.c */,
 			);
 			path = source;
+			sourceTree = "<group>";
+		};
+		EDD9EDEA2434ED12007BF8F6 /* blocs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = blocs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
