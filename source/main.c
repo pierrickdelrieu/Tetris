@@ -17,7 +17,8 @@ int main()
     int choix_suggestion_blocs; //1 pour afficher l'ensemble des blocs; 2 pour afficher 3 blocs aléatoirement
     
     
-    //....................................MENU....................................
+                    //....................................MENU....................................
+    
     //Saisie sécurisée choix forme plateau et taille du tableau
     supr_console();
     ecran_accueil();
@@ -45,6 +46,8 @@ int main()
         largeur = taille;
     }
     
+                    //....................................JEU....................................
+
    
     affichage_plateau(plateau,hauteur,largeur);
  
