@@ -26,6 +26,11 @@
 #define COTE_TRANSVERSAL 61 // =
 
 
+//..................GENERAL...................
+void creation_tableau_2D(int*** tableau, int ligne, int colonne);
+
+
+
 
 //..................PLATEAU...................
 #define TAILLE_MIN_PLATEAU 19
@@ -53,13 +58,13 @@ void choix_politique_suggestion_blocs(int* choix);
 
 //...................SYSTEME D'EXLOITATION....................
 #ifdef _WIN32
-#define OPERATING_SYSTEM "win" //windows
+#define SYSTEME_EXPLOITATION "win" //windows
 #elif __linux__
-#define OPERATING_SYSTEM "linux"
+#define SYSTEME_EXPLOITATION "linux"
 #elif __APPLE__
-#define OPERATING_SYSTEM "mac"
+#define SYSTEME_EXPLOITATION "mac"
 #else
-#define OPERATING_SYSTEM "unk" //systéme inconnu
+#define SYSTEME_EXPLOITATION "unk" //systéme inconnu
 #endif
 
 

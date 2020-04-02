@@ -15,12 +15,7 @@ int** creation_plateau_losange(int taille)
     int i,j; //compteur lignes et colonnes
     int** plateau = NULL; //retour = adresse du tableau 2D créé
     
-    plateau = (int**) malloc(taille * sizeof(int*)); //création du tableau de référence contenant les adresses de chaques lignes
-    
-    for(i=0; i<taille; i++)
-    {
-        *(plateau + i) = (int*) calloc(taille, sizeof(int)); //création de taille tableau de taille dimension
-    }
+    creation_tableau_2D(&plateau, taille, taille);
     
     //Initialisation d'un tableau remplit de point et d'espace pour former un losange
     for(i=0; i<taille; i++)
@@ -47,15 +42,10 @@ int** creation_plateau_triangle(int taille)
     int i,j; //compteur lignes et colonnes
     int** plateau = NULL; //retour = adresse du tableau 2D créé
     
-    plateau = (int**) malloc(taille * sizeof(int*)); //création du tableau de référence contenant les adresses de chaques lignes
-    
-    for(i=0; i<taille; i++)
-    {
-        *(plateau + i) = (int*) calloc(taille, sizeof(int)); //création de taille tableau de taille dimension
-    }
+   creation_tableau_2D(&plateau, taille/2, taille);
     
     //Initialisation d'un tableau remplit de point et d'espace pour former un losange
-    for(i=0; i<taille; i++)
+    for(i=0; i<taille/2; i++)
     {
         for(j=0; j<taille; j++)
         {
@@ -91,13 +81,7 @@ int** creation_plateau_cercle(int taille)
         taille_espace = 4;
     }
     
-    //Allocation du plateau
-    plateau = (int**) malloc(taille * sizeof(int*)); //création du tableau de référence contenant les adresses de chaques lignes
-    
-    for(i=0; i<taille; i++)
-    {
-        *(plateau + i) = (int*) calloc(taille, sizeof(int)); //création de taille tableau de taille dimension
-    }
+    creation_tableau_2D(&plateau, taille, taille);
     
     //Initialisation d'un tableau remplit de point et d'espace pour former un losange
     for(i=0; i<taille; i++)
@@ -199,3 +183,5 @@ void affichage_plateau(int** plateau, int hauteur, int largeur)
         printf("\n"); //retour à la ligne après l'affichage d'une ligne
     }
 }
+
+

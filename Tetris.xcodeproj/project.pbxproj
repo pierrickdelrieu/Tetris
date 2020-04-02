@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED74EC7124365471008B3C10 /* bloc.c in Sources */ = {isa = PBXBuildFile; fileRef = ED74EC7024365471008B3C10 /* bloc.c */; };
+		ED74EC732436551C008B3C10 /* general.c in Sources */ = {isa = PBXBuildFile; fileRef = ED74EC722436551C008B3C10 /* general.c */; };
 		EDCB210D24289AAC00CAD30C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCB210C24289AAC00CAD30C /* main.c */; };
 		EDCB211624289CF400CAD30C /* plateau.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCB211524289CF400CAD30C /* plateau.c */; };
 		EDCB212F242A9A2500CAD30C /* menu.c in Sources */ = {isa = PBXBuildFile; fileRef = EDCB212E242A9A2500CAD30C /* menu.c */; };
@@ -25,6 +27,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED74EC7024365471008B3C10 /* bloc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bloc.c; sourceTree = "<group>"; };
+		ED74EC722436551C008B3C10 /* general.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = general.c; sourceTree = "<group>"; };
 		EDCB210924289AAC00CAD30C /* Tetris */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tetris; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDCB210C24289AAC00CAD30C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EDCB211324289B7200CAD30C /* Note de cadrage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Note de cadrage.pdf"; sourceTree = "<group>"; };
@@ -77,8 +81,10 @@
 			children = (
 				EDCB210C24289AAC00CAD30C /* main.c */,
 				EDCB211424289CF400CAD30C /* fonctions.h */,
+				ED74EC722436551C008B3C10 /* general.c */,
 				EDCB211524289CF400CAD30C /* plateau.c */,
 				EDCB212E242A9A2500CAD30C /* menu.c */,
+				ED74EC7024365471008B3C10 /* bloc.c */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -163,9 +169,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED74EC732436551C008B3C10 /* general.c in Sources */,
 				EDCB210D24289AAC00CAD30C /* main.c in Sources */,
 				EDCB211624289CF400CAD30C /* plateau.c in Sources */,
 				EDCB212F242A9A2500CAD30C /* menu.c in Sources */,
+				ED74EC7124365471008B3C10 /* bloc.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
