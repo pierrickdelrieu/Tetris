@@ -93,18 +93,10 @@ int** creation_plateau_cercle(int taille)
             {
                 plateau[i][j] = CASE_VIDE_INJOUABLE;
             }
-//            else if((i<taille_espace) && (j < taille_espace-i))
-//            {
-//                plateau[i][j] = ESPACE;
-//            }
             else if((i>taille - taille_espace-1) && ((j < i-taille+taille_espace+1) || (j > taille -taille_espace-1 +(taille-i-1))))
             {
                 plateau[i][j] = CASE_VIDE_INJOUABLE;
             }
-//            else if((i>taille - taille_espace-1) && (j > taille -taille_espace-1 +(taille-i-1)))
-//            {
-//                plateau[i][j] = ESPACE;
-//            }
             else
             {
                 plateau[i][j] = CASE_VIDE_JOUABLE;
@@ -185,3 +177,66 @@ void affichage_plateau(int** plateau, int hauteur, int largeur)
 }
 
 
+int etat_ligne(int** plateau, int largeur, int num_ligne)
+{
+     //retourne 1 si la colonne est pleine, 0 sinon
+    
+    int j; //compteur
+    int retour = 1; //valeur de retour initialisé à 1 (on considere que le plateau est plein)
+    
+    for(j=0; j<largeur; j++)
+    {
+        if(plateau[num_ligne][j] == CASE_VIDE_JOUABLE)
+        {
+            retour = 0;
+        }
+    }
+    
+    return (retour);
+}
+
+
+int etat_colonne(int** plateau, int hauteur, int num_colonne)
+{
+     //retourne 1 si la colonne est pleine, 0 sinon
+    
+    int i; //compteur
+    int retour = 1; //valeur de retour initialisé à 1 (on considere que le plateau est plein)
+    
+    for(i=0; i<hauteur; i++)
+    {
+        if(plateau[i][num_colonne] == CASE_VIDE_JOUABLE)
+        {
+            retour = 0;
+        }
+    }
+    
+    return (retour);
+}
+
+void annuler_ligne(int** plateau, int largeur, int num_ligne)
+{
+    int j; //compteur
+    
+    for(j=0; j<largeur; j++)
+    {
+        if(plateau[num_ligne][j] == CASE_PLEINE)
+        {
+            plateau[num_ligne][j] = CASE_VIDE_JOUABLE;
+        }
+    }
+}
+
+
+void annuler_colonne(int** plateau, int hauteur, int num_colonne)
+{
+    int i; //compteur
+
+    for(i=0; i<hauteur; i++)
+    {
+        if(plateau[i][num_colonne] == CASE_PLEINE)
+        {
+            plateau[i][num_colonne] = CASE_VIDE_JOUABLE;
+        }
+    }
+}

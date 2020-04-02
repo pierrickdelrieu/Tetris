@@ -27,7 +27,7 @@
 
 
 //..................GENERAL...................
-void creation_tableau_2D(int*** tableau, int ligne, int colonne);
+void creation_tableau_2D(int*** tableau, int ligne, int colonne); //création plateau dynamique
 
 
 
@@ -41,6 +41,11 @@ int** creation_plateau_losange(int taille);
 int** creation_plateau_triangle(int taille);
 int** creation_plateau_cercle(int taille);
 void affichage_plateau(int** plateau, int hauteur, int largeur);
+int etat_ligne(int** plateau, int largeur, int num_ligne);
+int etat_colonne(int** plateau, int hauteur, int num_colonne);
+void annuler_ligne(int** plateau, int largeur, int num_ligne);
+void annuler_colonne(int** plateau, int hauteur, int num_colonne);
+
 
 //....................BLOC.....................
 

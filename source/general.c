@@ -9,7 +9,7 @@
 #include "fonctions.h"
 
 
-void creation_tableau_2D(int*** tableau, int ligne, int colonne)
+void creation_tableau_2D(int*** tableau, int ligne, int colonne) //création plateau dynamique
 {
     int i;
     

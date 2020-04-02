@@ -21,6 +21,8 @@ void etat_ligne(int*** plateau, int numero_ligne);
 -    Annuler colonne
 void etat_ligne(int*** plateau, int numero_ligne);
 
+FAIT
+
 
 ROMAIN
 -    suppression console
@@ -33,4 +35,5 @@ void creation_bloc(int*** bloc, int plateau_bloc, int coord_x, int coord_y, int 
 les blocs sont tous numéroté. Il faudra donc appelé cette fonction plusieurs fois dans un switch
 
 MAYBE : L'idéal serait de créer une structure pour chaque bloc... avec comme champs : hauteur, largeur, pointeur sur le bloc
-
+cf : voir les fichier xsv avec dans chaque fichier au meme endroit les corddonées et la taille de chaque bloc
+peut etre plus simple comme ca que de créer une structure pour chaque bloc (economie de mémoire)
