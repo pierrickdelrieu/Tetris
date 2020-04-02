@@ -7,7 +7,7 @@ Jeu similaire au jeu Tetris.
 A FAIRE
 
 PIERRICK
--    Création des 4 fichiers xsv avec les formes représentées par des 1(case pleine) et des 0 (case vide) identique à la page 8
+-    Création des 4 fichiers xsv avec les formes représentées par des 1(case pleine) et des 0 (case vide)
 
 -    Vérification état ligne renvoie 0 ou 1 si elle est pleine
 int etat_ligne(int numero_ligne);
@@ -37,3 +37,19 @@ les blocs sont tous numéroté. Il faudra donc appelé cette fonction plusieurs 
 MAYBE : L'idéal serait de créer une structure pour chaque bloc... avec comme champs : hauteur, largeur, pointeur sur le bloc
 cf : voir les fichier xsv avec dans chaque fichier au meme endroit les corddonées et la taille de chaque bloc
 peut etre plus simple comme ca que de créer une structure pour chaque bloc (economie de mémoire)
+
+
+
+
+
+
+
+
+A FAIRE
+- verification de la validité d'un bloc
+
+- placement bloc sur le plateau
+
+- selctionner bloc
+
+- affichage bloc (politique 1 et politique 2)
