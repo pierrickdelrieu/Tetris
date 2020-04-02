@@ -38,6 +38,8 @@
 		EDD9EDF724361E92007BF8F6 /* blocs_losange.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = blocs_losange.xlsx; sourceTree = "<group>"; };
 		EDD9EDF824361E9A007BF8F6 /* blocs_losange.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_losange.csv; sourceTree = "<group>"; };
 		EDD9EDFA24361F5E007BF8F6 /* blocs_cercle.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_cercle.csv; sourceTree = "<group>"; };
+		EDD9EDFB24362414007BF8F6 /* blocs_triangle.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_triangle.csv; sourceTree = "<group>"; };
+		EDD9EDFC2436241D007BF8F6 /* blocs_triangle.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = blocs_triangle.xlsx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				EDD9EDF224361B38007BF8F6 /* blocs_communs.csv */,
 				EDD9EDFA24361F5E007BF8F6 /* blocs_cercle.csv */,
 				EDD9EDF824361E9A007BF8F6 /* blocs_losange.csv */,
+				EDD9EDFB24362414007BF8F6 /* blocs_triangle.csv */,
 			);
 			path = blocs;
 			sourceTree = "<group>";
@@ -98,6 +101,7 @@
 				EDD9EDF424361B5C007BF8F6 /* blocs_communs.xlsx */,
 				EDD9EDF624361D0C007BF8F6 /* blocs_cercle.xlsx */,
 				EDD9EDF724361E92007BF8F6 /* blocs_losange.xlsx */,
+				EDD9EDFC2436241D007BF8F6 /* blocs_triangle.xlsx */,
 			);
 			path = originaux;
 			sourceTree = "<group>";
