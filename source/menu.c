@@ -102,7 +102,7 @@ void saisie_taille(int* taille, int choix_plateau)
         
         if(choix_plateau == PLATEAU_CERCLE) //Cercle
         {
-             printf("                               Vous avez choisit un plateau en tiangle\n\n\n");
+             printf("                               Vous avez choisit un plateau en cercle\n\n\n");
         }
         else if(choix_plateau == PLATEAU_LOSANGE)//Losange
         {
@@ -110,7 +110,7 @@ void saisie_taille(int* taille, int choix_plateau)
         }
         else //Triangle
         {
-            printf("                               Vous avez choisit un plateau en cercle\n\n\n");
+            printf("                               Vous avez choisit un plateau en triangle\n\n\n");
         }
         
         if(cpt != 0) //Si c'est pas la première saisie

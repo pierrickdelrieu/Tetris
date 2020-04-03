@@ -21,6 +21,7 @@
 #define POINT 46
 #define A 65 //le code ascii des lettres en majuscules est dans l'ordre A+i
 #define a 97 //le code ascii des lettres en minuscules est dans l'ordre a+i
+#define CHIFFRE 49
 #define ESPACE 32
 #define COTE_LATERAL 124 // |
 #define COTE_TRANSVERSAL 61 // =
@@ -52,7 +53,7 @@ void annuler_colonne(int** plateau, int hauteur, int num_colonne);
 
 
 //....................BLOC.....................
-#define HAUTEUR_TAB_BLOCS 10
+#define HAUTEUR_TAB_BLOCS 18
 #define LARGEUR_TAB_BLOCS 31
 void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int forme);
 void affichage_tous_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);

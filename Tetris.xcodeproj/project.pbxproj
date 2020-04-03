@@ -29,7 +29,6 @@
 /* Begin PBXFileReference section */
 		ED74EC7024365471008B3C10 /* bloc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bloc.c; sourceTree = "<group>"; };
 		ED74EC722436551C008B3C10 /* general.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = general.c; sourceTree = "<group>"; };
-		ED74EC762437A1F7008B3C10 /* blocs_communs.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = blocs_communs.strings; sourceTree = "<group>"; };
 		ED74EC772437A28A008B3C10 /* blocs_cercle.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = blocs_cercle.strings; sourceTree = "<group>"; };
 		ED74EC782437A2CC008B3C10 /* blocs_losange.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = blocs_losange.strings; sourceTree = "<group>"; };
 		ED74EC792437A2F2008B3C10 /* blocs_triangle.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = blocs_triangle.strings; sourceTree = "<group>"; };
@@ -88,7 +87,6 @@
 		EDD9EDEA2434ED12007BF8F6 /* blocs */ = {
 			isa = PBXGroup;
 			children = (
-				ED74EC762437A1F7008B3C10 /* blocs_communs.strings */,
 				ED74EC772437A28A008B3C10 /* blocs_cercle.strings */,
 				ED74EC782437A2CC008B3C10 /* blocs_losange.strings */,
 				ED74EC792437A2F2008B3C10 /* blocs_triangle.strings */,

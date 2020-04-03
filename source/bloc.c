@@ -35,7 +35,7 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
     if(fichier_blocs != NULL)
     {
         char cara = '0'; //initialisation de caractère différent de '/'
-        printf("Le fichier a bien était ouvert\n");
+        
         //Création d'un tableau correspondant
         while(cara != '/') //condition fin
         {
@@ -55,7 +55,7 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
                 {
                     tableau[i][j] = CASE_PLEINE;
                 }
-            
+                
                 j++; //si ajout alors on incrémente le numero de colonne
             }
         }
@@ -65,7 +65,8 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
     }
     else //le pointeur sur le fichier est toujours = NULL soit le fichier n'a pas était ouvert
     {
-        printf("Echec de l'ouverture\n");
+        printf("Erreur au niveau de l'ouverture du fichiers contenants tous les blocs\n");
+        exit(0); //Fin du programme
     }
 }
 
@@ -76,9 +77,9 @@ void affichage_tous_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
     int i,j; //declaration compteur de ligne et de colonne
     
     //affichage du tableau
-    for(i = 0; i < 10; i++)
+    for(i = 0; i < HAUTEUR_TAB_BLOCS; i++)
     {
-        for(j = 0; j < 31; j++)
+        for(j = 0; j < LARGEUR_TAB_BLOCS; j++)
         {
             if(tableau[i][j] == CASE_VIDE_JOUABLE)
             {
