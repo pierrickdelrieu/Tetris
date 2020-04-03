@@ -29,6 +29,10 @@
 /* Begin PBXFileReference section */
 		ED74EC7024365471008B3C10 /* bloc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bloc.c; sourceTree = "<group>"; };
 		ED74EC722436551C008B3C10 /* general.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = general.c; sourceTree = "<group>"; };
+		ED74EC762437A1F7008B3C10 /* blocs_communs.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = blocs_communs.strings; sourceTree = "<group>"; };
+		ED74EC772437A28A008B3C10 /* blocs_cercle.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = blocs_cercle.strings; sourceTree = "<group>"; };
+		ED74EC782437A2CC008B3C10 /* blocs_losange.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = blocs_losange.strings; sourceTree = "<group>"; };
+		ED74EC792437A2F2008B3C10 /* blocs_triangle.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = blocs_triangle.strings; sourceTree = "<group>"; };
 		EDCB210924289AAC00CAD30C /* Tetris */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tetris; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDCB210C24289AAC00CAD30C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EDCB211324289B7200CAD30C /* Note de cadrage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Note de cadrage.pdf"; sourceTree = "<group>"; };
@@ -36,14 +40,6 @@
 		EDCB211524289CF400CAD30C /* plateau.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = plateau.c; sourceTree = "<group>"; };
 		EDCB211724289E4500CAD30C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDCB212E242A9A2500CAD30C /* menu.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = menu.c; sourceTree = "<group>"; };
-		EDD9EDF224361B38007BF8F6 /* blocs_communs.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_communs.csv; sourceTree = "<group>"; };
-		EDD9EDF424361B5C007BF8F6 /* blocs_communs.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = blocs_communs.xlsx; sourceTree = "<group>"; };
-		EDD9EDF624361D0C007BF8F6 /* blocs_cercle.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = blocs_cercle.xlsx; sourceTree = "<group>"; };
-		EDD9EDF724361E92007BF8F6 /* blocs_losange.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = blocs_losange.xlsx; sourceTree = "<group>"; };
-		EDD9EDF824361E9A007BF8F6 /* blocs_losange.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_losange.csv; sourceTree = "<group>"; };
-		EDD9EDFA24361F5E007BF8F6 /* blocs_cercle.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_cercle.csv; sourceTree = "<group>"; };
-		EDD9EDFB24362414007BF8F6 /* blocs_triangle.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_triangle.csv; sourceTree = "<group>"; };
-		EDD9EDFC2436241D007BF8F6 /* blocs_triangle.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = blocs_triangle.xlsx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,24 +88,12 @@
 		EDD9EDEA2434ED12007BF8F6 /* blocs */ = {
 			isa = PBXGroup;
 			children = (
-				EDD9EDF324361B53007BF8F6 /* originaux */,
-				EDD9EDF224361B38007BF8F6 /* blocs_communs.csv */,
-				EDD9EDFA24361F5E007BF8F6 /* blocs_cercle.csv */,
-				EDD9EDF824361E9A007BF8F6 /* blocs_losange.csv */,
-				EDD9EDFB24362414007BF8F6 /* blocs_triangle.csv */,
+				ED74EC762437A1F7008B3C10 /* blocs_communs.strings */,
+				ED74EC772437A28A008B3C10 /* blocs_cercle.strings */,
+				ED74EC782437A2CC008B3C10 /* blocs_losange.strings */,
+				ED74EC792437A2F2008B3C10 /* blocs_triangle.strings */,
 			);
 			path = blocs;
-			sourceTree = "<group>";
-		};
-		EDD9EDF324361B53007BF8F6 /* originaux */ = {
-			isa = PBXGroup;
-			children = (
-				EDD9EDF424361B5C007BF8F6 /* blocs_communs.xlsx */,
-				EDD9EDF624361D0C007BF8F6 /* blocs_cercle.xlsx */,
-				EDD9EDF724361E92007BF8F6 /* blocs_losange.xlsx */,
-				EDD9EDFC2436241D007BF8F6 /* blocs_triangle.xlsx */,
-			);
-			path = originaux;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

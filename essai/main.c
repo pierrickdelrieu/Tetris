@@ -53,63 +53,59 @@ int main()
     plateau = creation_plateau_cercle(taille);
     affichage_plateau(plateau,taille,taille);
     
-//    //recuperation fichier csv
-//    FILE* fichier_blocs = NULL; //declaration d'un pointeur sur le fichier
-//    int tableau [10][31];
-//    int i = 0, j = 0;
-//
-//    //ouverture du fichier
-//    fichier_blocs = fopen("../blocs/blocs_communs.strings", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
-//
-//
-//    //tester l'ouverture du fichier
-//    if(fichier_blocs != NULL)
-//    {
-//        char cara = '0'; //initialisation de caractère différent de '/'
-//        printf("Le fichier a bien était ouvert\n");
-//        //Création d'un tableau correspondant
-//        while(cara != '/') //condition fin
-//        {
-//            cara = fgetc(fichier_blocs);
-//            if(cara == '\n') //si saut de lignedans le fichier  alors saut de ligne dans le tableau aussi
-//            {
-//                i++; //incrémentation numero de ligne
-//                j=0; //reinitialise numero colonne à 0
-//            }
-//            else if(cara != ';') //on affiche pas les ;
-//            {
-//                if(cara == '0')
-//                {
-//                    tableau[i][j] = CASE_VIDE_JOUABLE;
-//                }
-//                else if(cara == '1')
-//                {
-//                    tableau[i][j] = CASE_PLEINE;
-//                }
-//
-//                j++; //si ajout alors on incrémente le numero de colonne
-//            }
-//        }
-//
-//        //Fermeture du fichier
-//        fclose(fichier_blocs);
-//    }
-//    else //le pointeur sur le fichier est toujours = NULL soit le fichier n'a pas était ouvert
-//    {
-//        printf("Echec de l'ouverture\n");
-//    }
-
-    int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS];
-    creation_tableau_blocs(tableau_blocs);
-    int i,j;
+    //recuperation fichier csv
+    FILE* fichier_blocs = NULL; //declaration d'un pointeur sur le fichier
+    int tableau [10][31];
+    int i = 0, j = 0;
     
+    //ouverture du fichier
+    fichier_blocs = fopen("../blocs/blocs_cercle.csv", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
+
+
+    //tester l'ouverture du fichier
+    if(fichier_blocs != NULL)
+    {
+        char cara = '0'; //initialisation de caractère différent de '/'
+        printf("Le fichier a bien était ouvert\n");
+        //Création d'un tableau correspondant
+        while(cara != '/') //condition fin
+        {
+            cara = fgetc(fichier_blocs);
+            if(cara == '\n') //si saut de lignedans le fichier  alors saut de ligne dans le tableau aussi
+            {
+                i++; //incrémentation numero de ligne
+                j=0; //reinitialise numero colonne à 0
+            }
+            else if(cara != ';') //on affiche pas les ;
+            {
+                if(cara == '0')
+                {
+                    tableau[i][j] = CASE_VIDE_JOUABLE;
+                }
+                else if(cara == '1')
+                {
+                    tableau[i][j] = CASE_PLEINE;
+                }
+                
+                j++; //si ajout alors on incrémente le numero de colonne
+            }
+        }
+        
+        //Fermeture du fichier
+        fclose(fichier_blocs);
+    }
+    else //le pointeur sur le fichier est toujours = NULL soit le fichier n'a pas était ouvert
+    {
+        printf("Echec de l'ouverture\n");
+    }
+
     //affichage du tableau
     printf("Affichage tableau\n");
     for(i = 0; i < 10; i++)
     {
         for(j = 0; j < 31; j++)
         {
-         printf("%d ",tableau_blocs[i][j]);
+         printf("%d ",tableau[i][j]);
         }
         printf("\n");
     }

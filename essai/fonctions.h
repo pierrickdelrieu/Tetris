@@ -49,9 +49,6 @@ void annuler_colonne(int** plateau, int hauteur, int num_colonne);
 
 
 //....................BLOC.....................
-#define HAUTEUR_TAB_BLOCS 10
-#define LARGEUR_TAB_BLOCS 31
-void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 
 
 
