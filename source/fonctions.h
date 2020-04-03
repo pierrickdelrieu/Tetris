@@ -38,6 +38,9 @@ void desalocation_tableau2D(int** tableau, int ligne);
 #define CASE_VIDE_JOUABLE 0
 #define CASE_PLEINE 1
 #define CASE_VIDE_INJOUABLE -1
+#define PLATEAU_CERCLE 1
+#define PLATEAU_LOSANGE 2
+#define PLATEAU_TRIANGLE 3
 int** creation_plateau_losange(int taille);
 int** creation_plateau_triangle(int taille);
 int** creation_plateau_cercle(int taille);
@@ -51,7 +54,8 @@ void annuler_colonne(int** plateau, int hauteur, int num_colonne);
 //....................BLOC.....................
 #define HAUTEUR_TAB_BLOCS 10
 #define LARGEUR_TAB_BLOCS 31
-void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
+void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int forme);
+void affichage_tous_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 
 
 

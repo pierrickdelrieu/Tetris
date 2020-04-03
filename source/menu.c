@@ -83,7 +83,7 @@ void choix_plateau(int* choix_forme)
         fflush(stdin); //suprimer le buffer après avoir saisie la valeur pour éviter de faire crasher le programme (boucle infinie)
         supr_console();
         cpt++;
-    } while((*choix_forme != 1) && (*choix_forme != 2) && (*choix_forme != 3)); 
+    } while((*choix_forme != PLATEAU_CERCLE) && (*choix_forme != PLATEAU_LOSANGE) && (*choix_forme != PLATEAU_TRIANGLE));
     
 }
 
@@ -100,11 +100,11 @@ void saisie_taille(int* taille, int choix_plateau)
         printf("                                          CHOIX DU PLATEAU                                          \n");
         printf("          ................................................................................          \n\n\n\n");
         
-        if(choix_plateau == 1) //Cercle
+        if(choix_plateau == PLATEAU_CERCLE) //Cercle
         {
              printf("                               Vous avez choisit un plateau en tiangle\n\n\n");
         }
-        else if(choix_plateau == 2)//Losange
+        else if(choix_plateau == PLATEAU_LOSANGE)//Losange
         {
             printf("                               Vous avez choisit un plateau en losange\n\n\n");
         }
