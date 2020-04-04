@@ -1,8 +1,12 @@
 CC=gcc
-OUT=main
+SOURCES=./sources/*.c
+OUTPUT=./build
 
-$(OUT): clean
-	gcc -o $(OUT) source/*.c
+main: clean
+	gcc -o $(OUTPUT)/main $(SOURCES)
 
 clean:
-	rm $(OUT)
+	rm -rf $(OUTPUT)/main
+
+all: main
+	(cd $(OUTPUT) && ./main)

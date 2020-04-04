@@ -18,11 +18,11 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
     //ouverture du fichier correspondant a la forme
     if(forme == PLATEAU_CERCLE) //Cercle
     {
-         fichier_blocs = fopen("../blocs/blocs_cercle.strings", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
+        fichier_blocs = fopen("../blocs/blocs_cercle.strings", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
     }
     else if(forme == PLATEAU_LOSANGE)//Losange
     {
-       fichier_blocs = fopen("../blocs/blocs_losange.strings", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
+        fichier_blocs = fopen("../blocs/blocs_losange.strings", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
     }
     else //Triangle
     {
