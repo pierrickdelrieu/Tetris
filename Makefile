@@ -1,6 +1,6 @@
 CC=gcc
 SOURCES=./sources/*.c
-OUTPUT=./build
+OUTPUT=./
 
 main: clean
 	gcc -o $(OUTPUT)/main $(SOURCES)
