@@ -8,5 +8,7 @@ main: clean
 clean:
 	rm -rf $(OUTPUT)/main
 
-all: main
+run:
 	(cd $(OUTPUT) && ./main)
+
+all: main run
