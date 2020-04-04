@@ -8,13 +8,13 @@
 
 #include "fonctions.h"
 
-typedef struct
-{
-    int coord_x;
-    int coord_y;
-    int hauteur;
-    int largeur;
-} Bloc;
+// typedef struct
+// {
+//     int coord_x;
+//     int coord_y;
+//     int hauteur;
+//     int largeur;
+// } Bloc;
 
 void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int forme)
 {
@@ -26,19 +26,11 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
     //ouverture du fichier correspondant a la forme
     if(forme == PLATEAU_CERCLE) //Cercle
     {
-<<<<<<< HEAD:sources/bloc.c
-        fichier_blocs = fopen("../blocs/blocs_cercle.strings", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
-    }
-    else if(forme == PLATEAU_LOSANGE)//Losange
-    {
-        fichier_blocs = fopen("../blocs/blocs_losange.strings", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
-=======
          fichier_blocs = fopen("../blocs/blocs_cercle.csv", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
     }
     else if(forme == PLATEAU_LOSANGE)//Losange
     {
        fichier_blocs = fopen("../blocs/blocs_losange.csv", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
->>>>>>> 24cf4649b24ce3e9a8baefe220e9a8ccaa01b64e:source/bloc.c
     }
     else //Triangle
     {

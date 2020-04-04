@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <term.h>
 
+
 //Code ascii
 #define POINT 46
 #define A 65 //le code ascii des lettres en majuscules est dans l'ordre A+i
