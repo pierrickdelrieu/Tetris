@@ -17,7 +17,8 @@
 1;1;1;1;0;1;0;1;1;1;1;1;0;1;1;1;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0
 0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0/
 
-
+nombre de bloc
+32
 
 Numero bloc / coordonné x / coordonné y / hauteur / largeur;
 1
@@ -52,3 +53,4 @@ Numero bloc / coordonné x / coordonné y / hauteur / largeur;
 30
 31
 32
+
