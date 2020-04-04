@@ -29,9 +29,6 @@
 /* Begin PBXFileReference section */
 		ED74EC7024365471008B3C10 /* bloc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bloc.c; sourceTree = "<group>"; };
 		ED74EC722436551C008B3C10 /* general.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = general.c; sourceTree = "<group>"; };
-		ED74EC772437A28A008B3C10 /* blocs_cercle.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = blocs_cercle.strings; sourceTree = "<group>"; };
-		ED74EC782437A2CC008B3C10 /* blocs_losange.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = blocs_losange.strings; sourceTree = "<group>"; };
-		ED74EC792437A2F2008B3C10 /* blocs_triangle.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = blocs_triangle.strings; sourceTree = "<group>"; };
 		EDCB210924289AAC00CAD30C /* Tetris */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tetris; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDCB210C24289AAC00CAD30C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EDCB211324289B7200CAD30C /* Note de cadrage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Note de cadrage.pdf"; sourceTree = "<group>"; };
@@ -39,6 +36,9 @@
 		EDCB211524289CF400CAD30C /* plateau.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = plateau.c; sourceTree = "<group>"; };
 		EDCB211724289E4500CAD30C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDCB212E242A9A2500CAD30C /* menu.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = menu.c; sourceTree = "<group>"; };
+		EDEC9ED72438A87F006BDAEE /* blocs_cercle.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_cercle.csv; sourceTree = "<group>"; };
+		EDEC9ED82438A8A2006BDAEE /* blocs_losange.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_losange.csv; sourceTree = "<group>"; };
+		EDEC9ED92438A8C8006BDAEE /* blocs_triangle.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs_triangle.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,9 +87,9 @@
 		EDD9EDEA2434ED12007BF8F6 /* blocs */ = {
 			isa = PBXGroup;
 			children = (
-				ED74EC772437A28A008B3C10 /* blocs_cercle.strings */,
-				ED74EC782437A2CC008B3C10 /* blocs_losange.strings */,
-				ED74EC792437A2F2008B3C10 /* blocs_triangle.strings */,
+				EDEC9ED72438A87F006BDAEE /* blocs_cercle.csv */,
+				EDEC9ED82438A8A2006BDAEE /* blocs_losange.csv */,
+				EDEC9ED92438A8C8006BDAEE /* blocs_triangle.csv */,
 			);
 			path = blocs;
 			sourceTree = "<group>";

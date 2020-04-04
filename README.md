@@ -40,7 +40,7 @@ les blocs sont tous numéroté. Il faudra donc appelé cette fonction plusieurs 
 MAYBE : L'idéal serait de créer une structure pour chaque bloc... avec comme champs : hauteur, largeur, pointeur sur le bloc
 cf : - voir les fichier xsv avec dans chaque fichier au meme endroit les corddonées et la taille de chaque bloc
 peut etre plus simple comme ca que de créer une structure pour chaque bloc (economie de mémoire)
-    - creer un tableau de taille N avec les coordonées de tous les blocs (stuctures coordonnées)
+    - creer un tableau de taille N avec les coordonées de tous les blocs (stuctures blocs avec coord et taille)
 
 
 
