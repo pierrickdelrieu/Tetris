@@ -55,6 +55,8 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
             }
             else if(cara != ';') //on affiche pas les ;
             {
+                /*dans le fichier .csv, les 0 représente des case vide, les 1 des caes pleines
+                et les n l'endroit où il faut afficher le numéro du blocs*/
                 if(cara == '0')
                 {
                     tableau[i][j] = CASE_VIDE_JOUABLE;
@@ -62,6 +64,10 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
                 else if(cara == '1')
                 {
                     tableau[i][j] = CASE_PLEINE;
+                }
+                else if(cara == 'n') //endroit ou on doit afficher le numero du blocs
+                {
+                    tableau[i][j] = NUM_BLOCS_TAB_BLOCS; // conversion de n en un entier car le tableau et de type entier
                 }
                 
                 j++; //si ajout alors on incrémente le numero de colonne
@@ -83,6 +89,7 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
 void affichage_tous_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
 {
     int i,j; //declaration compteur de ligne et de colonne
+    int num_bloc = 1; //déclaration et initialisation de la variable des numeros de blocs
     
     //affichage du tableau
     for(i = 0; i < HAUTEUR_TAB_BLOCS; i++)
@@ -96,6 +103,11 @@ void affichage_tous_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
             else if(tableau[i][j] == CASE_PLEINE)
             {
                 printf("◼︎ "); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
+            }
+            else if(tableau[i][j] == NUM_BLOCS_TAB_BLOCS)
+            {
+                printf("%d ", num_bloc);
+                num_bloc ++;
             }
         }
         printf("\n");
