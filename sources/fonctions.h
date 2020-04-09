@@ -43,6 +43,7 @@ void desalocation_tableau2D(int** tableau, int ligne);
 #define PLATEAU_CERCLE 1
 #define PLATEAU_LOSANGE 2
 #define PLATEAU_TRIANGLE 3
+
 int** creation_plateau_losange(int taille);
 int** creation_plateau_triangle(int taille);
 int** creation_plateau_cercle(int taille);
@@ -54,13 +55,19 @@ void annuler_colonne(int** plateau, int hauteur, int num_colonne);
 
 
 //....................BLOC.....................
-#define HAUTEUR_TAB_BLOCS 21
-#define LARGEUR_TAB_BLOCS 31
-#define NUM_BLOCS_TAB_BLOCS 10
+#define HAUTEUR_TAB_BLOCS 20
+#define LARGEUR_TAB_BLOCS 50
+#define TAILLE_MAX_BLOC 5
+#define DELIMITATION_BLOC 3 //delimitation blocs dans le tableau (remplace les #)
+
 void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int forme);
 void affichage_tous_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
+int hauteur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
+int largeur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 
 
+//.................FICHIER.CSV..................
+#define ORIGINE_COORD 1370 //nombre de caractères avant d'arriver au coordonnés
 
 
 //....................MENU....................

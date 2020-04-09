@@ -8,13 +8,6 @@
 
 #include "fonctions.h"
 
-// typedef struct
-// {
-//     int coord_x;
-//     int coord_y;
-//     int hauteur;
-//     int largeur;
-// } Bloc;
 
 void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int forme)
 {
@@ -55,7 +48,7 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
             }
             else if(cara != ';') //on affiche pas les ;
             {
-                /*dans le fichier .csv, les 0 représente des case vide, les 1 des caes pleines
+                /*dans le fichier .csv, les 0 représente des case vide, les 1 des cases pleines
                 et les n l'endroit où il faut afficher le numéro du blocs*/
                 if(cara == '0')
                 {
@@ -65,9 +58,9 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
                 {
                     tableau[i][j] = CASE_PLEINE;
                 }
-                else if(cara == 'n') //endroit ou on doit afficher le numero du blocs
+                else if(cara == '#') //délimitation blocs
                 {
-                    tableau[i][j] = NUM_BLOCS_TAB_BLOCS; // conversion de n en un entier car le tableau et de type entier
+                    tableau[i][j] = DELIMITATION_BLOC;
                 }
                 
                 j++; //si ajout alors on incrémente le numero de colonne
@@ -89,14 +82,13 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
 void affichage_tous_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
 {
     int i,j; //declaration compteur de ligne et de colonne
-    int num_bloc = 1; //déclaration et initialisation de la variable des numeros de blocs
-    
+
     //affichage du tableau
     for(i = 0; i < HAUTEUR_TAB_BLOCS; i++)
     {
         for(j = 0; j < LARGEUR_TAB_BLOCS; j++)
         {
-            if(tableau[i][j] == CASE_VIDE_JOUABLE)
+            if((tableau[i][j] == CASE_VIDE_JOUABLE) || (tableau[i][j] == DELIMITATION_BLOC))
             {
                 printf("%c ", ESPACE);
             }
@@ -104,12 +96,71 @@ void affichage_tous_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
             {
                 printf("◼︎ "); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
             }
-            else if(tableau[i][j] == NUM_BLOCS_TAB_BLOCS)
-            {
-                printf("%d ", num_bloc);
-                num_bloc ++;
-            }
         }
         printf("\n");
     }
 }
+
+int hauteur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
+{
+    int hauteur = 1; //declaration dans la fonction car besoin d'etre initialisé a 1
+    // Calcul rang du bloc dans le tableau
+    int rang = 0;
+    int num_bloc_copie = num_bloc;
+    while(num_bloc_copie >10)
+    {
+        rang++;
+        num_bloc_copie = num_bloc_copie - 10;
+    }
+    
+
+    //Calcul coordonnées du bloc dans le tableau
+    int x = ((num_bloc-1) % 10) * 5;
+    int y = 4 + (5*rang) ;
+
+    while((hauteur<=TAILLE_MAX_BLOC) && (tab_blocs[y-hauteur][x] != DELIMITATION_BLOC)) //condition d'arret
+    {
+        hauteur ++;
+    }
+
+    return (hauteur);
+}
+
+int largeur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
+{
+    int largeur = 1; //declaration dans la fonction car besoin d'etre initialisé a 1
+
+    // Calcul rang du bloc dans le tableau
+    int rang = 0;
+    int num_bloc_copie = num_bloc;
+    while(num_bloc_copie >10)
+    {
+        rang++;
+        num_bloc_copie = num_bloc_copie - 10;
+    }
+    
+
+    //Calcul coordonnées du bloc dans le tableau
+    int x = ((num_bloc-1) % 10) * 5;
+    int y = 4 + (5*rang) ;
+    
+    while((largeur<TAILLE_MAX_BLOC) && (tab_blocs[y][x+largeur] != DELIMITATION_BLOC)) //condition d'arret
+    {
+        largeur ++;
+    }
+
+    return (largeur);
+}
+
+// void creation_struct_bloc()
+// {
+//     typedef struct
+//     {
+//         int** blocs;
+//         int hauteur;
+//         int largeur;
+
+//     } Bloc;
+
+//     Bloc bloc
+// }
