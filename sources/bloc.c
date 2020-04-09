@@ -107,7 +107,7 @@ int hauteur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOC
     // Calcul rang du bloc dans le tableau
     int rang = 0;
     int num_bloc_copie = num_bloc;
-    while(num_bloc_copie >10)
+    while(num_bloc_copie > 10) //le tableau dans le fichier csv est composer de 3 rang de 10 blocs max
     {
         rang++;
         num_bloc_copie = num_bloc_copie - 10;
@@ -133,7 +133,7 @@ int largeur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOC
     // Calcul rang du bloc dans le tableau
     int rang = 0;
     int num_bloc_copie = num_bloc;
-    while(num_bloc_copie >10)
+    while(num_bloc_copie > 10) //le tableau dans le fichier csv est composer de 3 rang de 10 blocs max
     {
         rang++;
         num_bloc_copie = num_bloc_copie - 10;
@@ -152,15 +152,68 @@ int largeur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOC
     return (largeur);
 }
 
-// void creation_struct_bloc()
-// {
-//     typedef struct
-//     {
-//         int** blocs;
-//         int hauteur;
-//         int largeur;
+Bloc creation_struct_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
+{
+    // Calcul rang du bloc dans le tableau
+    int rang = 0;
+    int num_bloc_copie = num_bloc;
+    while(num_bloc_copie > 10) //le tableau dans le fichier csv est composer de 3 rang de 10 blocs max
+    {
+        rang++;
+        num_bloc_copie = num_bloc_copie - 10;
+    }
+    
 
-//     } Bloc;
+    //Calcul coordonnées du bloc dans le tableau
+    int x = ((num_bloc-1) % 10) * 5;
+    int y = 4 + (5*rang) ;
 
-//     Bloc bloc
-// }
+    
+    Bloc bloc; //declaration d'une variable de type bloc
+    int i,j; //compteur
+
+    bloc.hauteur = hauteur_bloc(num_bloc,tab_blocs); //initialisation hauteur du bloc dans la structure
+    bloc.largeur = largeur_bloc(num_bloc,tab_blocs); //initialisation largeur du bloc dans la structure
+
+    creation_tableau_2D(&bloc.tableau, bloc.hauteur, bloc.largeur); //allocation de l'espace necessaire pour construire le bloc
+
+    //initialisation des valeurs du tableau correspondant au bloc dans la structure
+    for(i=0; i<bloc.hauteur; i++)
+    {
+       for(j=0; j<bloc.largeur; j++)
+       {
+           bloc.tableau[i][j] = tab_blocs[y - bloc.hauteur + i + 1][x + j];
+       } 
+    }
+
+    return (bloc);
+}
+
+
+void affichage_bloc(Bloc bloc)
+{
+    int i,j; //compteur
+
+    // printf("\n\nLe bloc est \n"); //test
+
+    for(i=0; i<bloc.hauteur; i++)
+    {
+       for(j=0; j<bloc.largeur; j++)
+       {
+           if(bloc.tableau[i][j] == CASE_VIDE_JOUABLE)
+           {
+                printf("%c ", ESPACE);
+           }
+           else if(bloc.tableau[i][j] == CASE_PLEINE)
+           {
+               printf("◼︎ "); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
+           }
+       } 
+       printf("\n");
+    }
+}
+
+void desalocation_struct_bloc(Bloc bloc)
+{
+    desalocation_tableau2D(bloc.tableau, bloc.hauteur);
+}

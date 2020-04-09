@@ -8,13 +8,6 @@
 
 #include "fonctions.h"
 
-typedef struct
-{
-    int** blocs;
-    int hauteur;
-    int largeur;
-
-} Bloc;
 
 int main()
 {
@@ -70,12 +63,9 @@ int main()
 
     Bloc bloc1;
 
-    bloc1.hauteur = hauteur_bloc(21,tableau_blocs);
-    bloc1.largeur = largeur_bloc(21,tableau_blocs);
-
-    printf("La hauteur du bloc 21 est %d\n", bloc1.hauteur);
-    printf("La largeur du bloc 21 est %d\n", bloc1.largeur);
-
+   bloc1 = creation_struct_bloc(1,tableau_blocs);
+   affichage_bloc(bloc1);
+   desalocation_struct_bloc(bloc1); 
     
 
  
