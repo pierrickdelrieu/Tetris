@@ -115,20 +115,20 @@ void affichage_plateau(int** plateau, int hauteur, int largeur)
     //affichage en fonctions des trois types de plateau (losange, cercle, triangle)
     
     int i,j;
-    int hauteur_totale = hauteur + 3; //hauteur totale = hauteur + colonnes numeros + 2 lignes de contours plateau
-    int largeur_totale = largeur + 3; //largeur totale = largeur + lignes numeros + 2 colonnes de contours plateau
+    int hauteur_totale_plateau = hauteur + 3; //hauteur totale = hauteur + colonnes numeros + 2 lignes de contours plateau
+    int largeur_totale_plateau = largeur + 3; //largeur totale = largeur + lignes numeros + 2 colonnes de contours plateau
 
     
-    for(i=0; i<hauteur_totale; i++)
+    for(i=0; i<hauteur_totale_plateau; i++)
     {
-        for(j=0; j<largeur_totale; j++)
+        for(j=0; j<largeur_totale_plateau; j++)
         {
             //Affichage des espaces
-            if(((i == 0) || (i == 1)) && ((j == 0) || (j == 1) || (j == largeur_totale-1)))
+            if(((i == 0) || (i == 1)) && ((j == 0) || (j == 1) || (j == largeur_totale_plateau-1)))
             {
                 printf("%c ",ESPACE);
             }
-            else if((i == hauteur_totale-1) && (j == 0))
+            else if((i == hauteur_totale_plateau-1) && (j == 0))
             {
                 printf("%c ",ESPACE);
             }
@@ -146,11 +146,11 @@ void affichage_plateau(int** plateau, int hauteur, int largeur)
             }
             
             //Affichage des contours du plateau
-            else if((i > 1) && ((j == 1) || (j == largeur_totale-1)))
+            else if((i > 1) && ((j == 1) || (j == largeur_totale_plateau-1)))
             {
                 printf("%c ",COTE_LATERAL);
             }
-            else if(((j > 1) && (j <= largeur_totale-2)) && ((i == 1) || (i == hauteur_totale-1)))
+            else if(((j > 1) && (j <= largeur_totale_plateau-2)) && ((i == 1) || (i == hauteur_totale_plateau-1)))
             {
                 printf("%c%c",COTE_TRANSVERSAL,COTE_TRANSVERSAL);
             }

@@ -13,12 +13,12 @@ void creation_tableau_2D(int*** tableau, int ligne, int colonne) //création pla
 {
     int i;
     
-     *tableau = (int**) malloc(ligne * sizeof(int*)); //création du tableau de référence contenant les adresses de chaques lignes
+    *tableau = (int**) malloc(ligne * sizeof(int*)); //création du tableau de référence contenant les adresses de chaques lignes
     
     for(i=0; i<ligne; i++)
-       {
-           *(*(tableau) + i) = (int*) calloc(colonne, sizeof(int)); //création de taille tableau de taille dimension
-       }
+    {
+        *(*(tableau) + i) = (int*) calloc(colonne, sizeof(int)); //création de taille tableau de taille dimension
+    }
 }
 
 void desalocation_tableau2D(int** tableau, int ligne)
@@ -34,5 +34,3 @@ void desalocation_tableau2D(int** tableau, int ligne)
     //desalocation du tableau de reference (contenant les adresses des tableaux de chaque ligne
     free(tableau);
 }
-
-

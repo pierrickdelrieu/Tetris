@@ -79,28 +79,6 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
 
 
 
-void affichage_tous_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
-{
-    int i,j; //declaration compteur de ligne et de colonne
-
-    //affichage du tableau
-    for(i = 0; i < HAUTEUR_TAB_BLOCS; i++)
-    {
-        for(j = 0; j < LARGEUR_TAB_BLOCS; j++)
-        {
-            if((tableau[i][j] == CASE_VIDE_JOUABLE) || (tableau[i][j] == DELIMITATION_BLOC))
-            {
-                printf("%c ", ESPACE);
-            }
-            else if(tableau[i][j] == CASE_PLEINE)
-            {
-                printf("◼︎ "); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
-            }
-        }
-        printf("\n");
-    }
-}
-
 int hauteur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
 {
     int hauteur = 1; //declaration dans la fonction car besoin d'etre initialisé a 1
@@ -190,30 +168,122 @@ Bloc creation_struct_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR
 }
 
 
-void affichage_bloc(Bloc bloc)
-{
-    int i,j; //compteur
-
-    // printf("\n\nLe bloc est \n"); //test
-
-    for(i=0; i<bloc.hauteur; i++)
-    {
-       for(j=0; j<bloc.largeur; j++)
-       {
-           if(bloc.tableau[i][j] == CASE_VIDE_JOUABLE)
-           {
-                printf("%c ", ESPACE);
-           }
-           else if(bloc.tableau[i][j] == CASE_PLEINE)
-           {
-               printf("◼︎ "); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
-           }
-       } 
-       printf("\n");
-    }
-}
 
 void desalocation_struct_bloc(Bloc bloc)
 {
     desalocation_tableau2D(bloc.tableau, bloc.hauteur);
 }
+
+
+
+void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
+{
+    Bloc bloc1, bloc2, bloc3;
+    int i,j;
+    int cpt;
+    int cpt_espace;
+
+
+    //creation des 3 blocs a afficher
+    bloc1 = creation_struct_bloc(num_bloc1, tab_blocs);
+    bloc2 = creation_struct_bloc(num_bloc2, tab_blocs);
+    bloc3 = creation_struct_bloc(num_bloc3, tab_blocs);
+        
+    //afichage blocs
+    for(i=0; i<TAILLE_MAX_BLOC; i++)
+    {
+
+        //affichage bloc 1
+        cpt = 0;
+        if(i < bloc1.hauteur)
+        {
+            for(j=0; j<bloc1.largeur; j++)
+            {
+                if(bloc1.tableau[i][j] == CASE_VIDE_JOUABLE)
+                {
+                    printf("%c ", ESPACE);
+                }
+                else if(bloc1.tableau[i][j] == CASE_PLEINE)
+                {
+                    printf("◼︎ "); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
+                }
+                cpt ++;
+            } 
+        }
+    
+        //affichage des espaces
+        for(cpt_espace = 0; cpt_espace < bloc1.largeur + 3 - cpt; cpt_espace ++)
+        {
+            printf("%c ", ESPACE);
+        }
+            
+            
+        //affichage bloc 2
+        cpt = 0;
+        if(i < bloc2.hauteur)
+        {
+            for(j=0; j<bloc2.largeur; j++)
+            {
+                if(bloc2.tableau[i][j] == CASE_VIDE_JOUABLE)
+                {
+                    printf("%c ", ESPACE);
+                }
+                else if(bloc2.tableau[i][j] == CASE_PLEINE)
+                {
+                    printf("◼︎ "); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
+                }
+                cpt ++; 
+            }
+        }
+
+        //affichage des espaces
+        for(cpt_espace = 0; cpt_espace < bloc1.largeur + bloc2.largeur + 3 - cpt; cpt_espace ++)
+        {
+            printf("%c ", ESPACE);
+        }
+
+        //affichage bloc 3
+        if(i < bloc3.hauteur)
+        {
+            for(j=0; j<bloc3.largeur; j++)
+            {
+                if(bloc3.tableau[i][j] == CASE_VIDE_JOUABLE)
+                {
+                    printf("%c ", ESPACE);
+                }
+                else if(bloc3.tableau[i][j] == CASE_PLEINE)
+                {
+                    printf("◼︎ "); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
+                }
+                cpt++;
+            } 
+        }
+        if(cpt != 0)
+        {
+            printf("\n");
+        }
+    }
+
+    printf("\n");
+    //affichage des numeros des blocs
+    printf("%d ",num_bloc1);
+    for(cpt_espace = 0; cpt_espace < bloc1.largeur; cpt_espace ++) //(bloc1.largeur*2) / 2 = bloc1.largeur
+    {
+        printf("%c ", ESPACE);
+    }
+    printf("      ");
+    printf("%d ",num_bloc2);
+    for(cpt_espace = 0; cpt_espace < bloc2.largeur; cpt_espace ++) //(bloc1.largeur*2) / 2 = bloc1.largeur
+    {
+        printf("%c ", ESPACE);
+    }
+    printf("      ");
+    printf("%d ",num_bloc3);
+
+
+    //desalocation memoire des blocs afficher precedemment
+    desalocation_struct_bloc(bloc1);
+    desalocation_struct_bloc(bloc2);
+    desalocation_struct_bloc(bloc3);
+}
+

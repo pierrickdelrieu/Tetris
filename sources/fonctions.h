@@ -28,10 +28,10 @@
 #define COTE_TRANSVERSAL 61 // =
 
 
+
 //..................GENERAL...................
 void creation_tableau_2D(int*** tableau, int ligne, int colonne); //création plateau dynamique
 void desalocation_tableau2D(int** tableau, int ligne);
-
 
 
 
@@ -54,6 +54,7 @@ void annuler_ligne(int** plateau, int largeur, int num_ligne);
 void annuler_colonne(int** plateau, int hauteur, int num_colonne);
 
 
+
 //....................BLOC.....................
 typedef struct
 {
@@ -68,17 +69,13 @@ typedef struct
 #define DELIMITATION_BLOC 3 //delimitation blocs dans le tableau (remplace les #)
 
 void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int forme);
-void affichage_tous_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 int hauteur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 int largeur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 Bloc creation_struct_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
-void affichage_bloc(Bloc bloc);
 void desalocation_struct_bloc(Bloc bloc);
+void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 
 
-
-//.................FICHIER.CSV..................
-#define ORIGINE_COORD 1370 //nombre de caractères avant d'arriver au coordonnés
 
 
 //....................MENU....................

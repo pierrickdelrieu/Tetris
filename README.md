@@ -50,5 +50,5 @@ A FAIRE
 
 - placement bloc sur le plateau
 
-- selectionner (+affichage pour la selection) bloc en fonction de la politique demandé
+- selectionner (+affichage pour la selection) bloc en fonction de la politique demandé (saise utilisateur)
 
