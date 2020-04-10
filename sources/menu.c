@@ -32,7 +32,7 @@ void ecran_accueil(void)
         }
         
         printf("     SAISIR : ");
-        scanf("%d",&choix); // saisie de 1 ou 2
+        scanf(" %d",&choix); // saisie de 1 ou 2
         fflush(stdin);//suprimer le buffer d'entré après avoir saisie la valeur pour éviter de faire crasher le programme (boucle infinie)
         cpt++;
         supr_console();
@@ -117,14 +117,14 @@ void saisie_taille(int* taille, int choix_plateau)
         {
             printf("                                              ERREUR\n");
         }
-        printf("     Saisir une taille impaire pour le plateau (compris entre %d et 26) : ",TAILLE_MIN_PLATEAU);
+        printf("     Saisir une taille impaire pour le plateau (compris entre %d et 25) : ",TAILLE_MIN_PLATEAU);
         
         
         scanf("%d",taille);
         fflush(stdin); //suprimer le buffer après avoir saisie la valeur pour éviter de faire crasher le programme (boucle infinie)
         cpt ++;
         supr_console();
-    }while((*taille<TAILLE_MIN_PLATEAU) || (*taille>26) || (*taille % 2 == 0));
+    }while((*taille<TAILLE_MIN_PLATEAU) || (*taille>25) || (*taille % 2 == 0));
 }
 
 void choix_politique_suggestion_blocs(int* choix)

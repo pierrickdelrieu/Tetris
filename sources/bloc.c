@@ -178,10 +178,10 @@ void desalocation_struct_bloc(Bloc bloc)
 
 void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
 {
-    Bloc bloc1, bloc2, bloc3;
-    int i,j;
-    int cpt;
-    int cpt_espace;
+    Bloc bloc1, bloc2, bloc3; //initialisation des structures Bloc
+    int i,j; //compteur
+    int cpt; //cpt utilisé dans le calcul pour afficher les espaces
+    int cpt_espace; //cpt d'espace dans le boucle while
 
 
     //creation des 3 blocs a afficher
@@ -192,7 +192,6 @@ void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_bloc
     //afichage blocs
     for(i=0; i<TAILLE_MAX_BLOC; i++)
     {
-
         //affichage bloc 1
         cpt = 0;
         if(i < bloc1.hauteur)
@@ -287,3 +286,102 @@ void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_bloc
     desalocation_struct_bloc(bloc3);
 }
 
+int affichage_plateau_blocs_politique1(int** plateau, int hauteur_plateau, int largeur_plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
+{
+    int num_bloc = 1;
+    int choix_num_bloc;
+    int erreur = 0;
+
+    do
+    {
+        affichage_plateau(plateau,hauteur_plateau,largeur_plateau);
+
+        //affichage des numeros blocs en prenant en compte l'affichage de fin des blocs
+        if(num_bloc + 2 <= nombre_blocs)
+        {
+            affichage_3_blocs(num_bloc, num_bloc + 1, num_bloc + 2, tableau_blocs);
+        }
+        else if(num_bloc + 1 <= nombre_blocs)
+        {
+            affichage_3_blocs(num_bloc, num_bloc + 1, num_bloc + 1, tableau_blocs);
+        }
+        else
+        {
+            affichage_3_blocs(num_bloc, num_bloc, num_bloc, tableau_blocs);
+
+        }
+
+        //affichage message d'erreur
+        if (erreur == 1)
+        {
+            printf("Erreur de saisie (plus de blocs disponibles)\n");
+            erreur = 0;
+        }
+
+        //saisie utilisateur
+        printf("\nChoisir un bloc \n(taper 0 pour consulter les blocs suivants ou 40 pour consulter les blocs précedents) : ");
+        scanf("%d", &choix_num_bloc);
+        fflush(stdin);
+
+        supr_console();
+
+
+        //blocs suivants ou blocs précédents
+        if((choix_num_bloc == 0) && (num_bloc+2 <= nombre_blocs))
+        {
+            num_bloc = num_bloc + 3;
+        }
+        else if((choix_num_bloc == 40) && (num_bloc != 1))
+        {
+            num_bloc = num_bloc - 3;
+        }
+        else
+        {
+            erreur = 1;
+        }
+        
+    
+
+    }while ((choix_num_bloc == 0) || (choix_num_bloc == 40) || ((choix_num_bloc != num_bloc) && (choix_num_bloc != num_bloc + 1) && (choix_num_bloc != num_bloc + 2)));
+    
+    return (choix_num_bloc);
+}
+
+
+int affichage_plateau_blocs_politique2(int** plateau, int hauteur_plateau, int largeur_plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
+{
+    int num_bloc1, num_bloc2, num_bloc3;
+    int choix_num_bloc;
+    int erreur = 0;
+
+    do
+    {
+        affichage_plateau(plateau,hauteur_plateau,largeur_plateau);
+
+        num_bloc1 = 1 + (rand() % nombre_blocs);
+
+        do
+        {
+            num_bloc2 = 1 + (rand() % nombre_blocs);
+        }while(num_bloc2 == num_bloc1);
+
+        do
+        {
+            num_bloc3 = 1 + (rand() % nombre_blocs);
+        }while((num_bloc3 == num_bloc1) || (num_bloc3 == num_bloc2));
+
+        affichage_3_blocs(num_bloc1, num_bloc2, num_bloc3, tableau_blocs);
+
+       
+
+        //saisie utilisateur
+        printf("\nChoisir un bloc \n(taper 0 pour consulter d'autre blocs aléatoire) : ");
+        scanf("%d", &choix_num_bloc);
+        fflush(stdin);
+        supr_console();
+    
+
+    }while (choix_num_bloc == 0);
+    
+    return (choix_num_bloc);
+}

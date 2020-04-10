@@ -57,33 +57,20 @@ int main()
     
                     //....................................JEU....................................
 
-    
+    //Initialisation
     creation_tableau_blocs(tableau_blocs, choix_forme);
-    
     int choix_num_bloc;
 
+    //Boucle de jeu
+    
     //affichage des blocs + plateau
     if(choix_politique_blocs == 1) //affichage de l'ensemble des blocs
     {
-        int num_bloc = 1;
-        do
-        {
-            affichage_plateau(plateau,hauteur_plateau,largeur_plateau);
-            affichage_3_blocs(num_bloc, num_bloc + 1, num_bloc + 2, tableau_blocs);
-
-            //saisie utilisateur
-            printf("\nChoisir un bloc ou taper 0 pour consulter les blocs suivants: ");
-            scanf("%d", &choix_num_bloc);
-            fflush(stdin);
-
-            if(choix_num_bloc == 0)
-            {
-                num_bloc = num_bloc + 3;
-            }
-
-            supr_console();
-
-        }while ((choix_num_bloc == 0) || (choix_num_bloc > nombre_blocs) || ((choix_num_bloc != num_bloc) && (choix_num_bloc != num_bloc + 1) && (choix_num_bloc != num_bloc + 2)));
+        choix_num_bloc = affichage_plateau_blocs_politique1(plateau, hauteur_plateau, largeur_plateau, tableau_blocs, nombre_blocs);
+    }
+    else if(choix_politique_blocs == 2) //affichage de trois blocs aléatoire
+    {
+        choix_num_bloc = affichage_plateau_blocs_politique2(plateau, hauteur_plateau, largeur_plateau, tableau_blocs, nombre_blocs);
     }
  
     return 0;

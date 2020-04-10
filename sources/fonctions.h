@@ -74,7 +74,8 @@ int largeur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOC
 Bloc creation_struct_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 void desalocation_struct_bloc(Bloc bloc);
 void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
-
+int affichage_plateau_blocs_politique1(int** plateau, int hauteur_plateau, int largeur_plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs);
+int affichage_plateau_blocs_politique2(int** plateau, int hauteur_plateau, int largeur_plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs);
 
 
 

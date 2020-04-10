@@ -29,6 +29,10 @@ void creation_plateau_blocs(int *** plateau_bloc, int choix_forme);
 
 - desalocation structure bloc (A REVOIR)
 
+- affichage et saisie choix bloque politique 1
+
+- affichage et saisie choix bloque politique 2
+
 FAIT
 
 
@@ -50,5 +54,15 @@ A FAIRE
 
 - placement bloc sur le plateau
 
-- selectionner (+affichage pour la selection) bloc en fonction de la politique demandé (saise utilisateur)
+- calcul du score
 
+
+
+QUESTION
+- utilisation tableau 3D pour les blocs (pas necessaire pour moi) vraiment obligatoire ?
+
+- gestion de la supression des lignes, où mettre les blocs une fois une lignes pleine ...
+
+- type de calcul de score
+
+- affichage aleatoire, proposer un reaffichage de blocs aléatoire
