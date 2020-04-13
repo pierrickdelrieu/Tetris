@@ -60,6 +60,7 @@ int main()
     //Initialisation
     creation_tableau_blocs(tableau_blocs, choix_forme);
     int choix_num_bloc;
+    int coord_x, coord_y;
 
     //Boucle de jeu
     
@@ -72,6 +73,22 @@ int main()
     {
         choix_num_bloc = affichage_plateau_blocs_politique2(plateau, hauteur_plateau, largeur_plateau, tableau_blocs, nombre_blocs);
     }
+
+    //Saisie coordonnée bloc
+    affichage_plateau(plateau,hauteur_plateau,largeur_plateau);
+    saisie_coord_bloc(&coord_x, &coord_y);
+    supr_console();
+
+    //Placement du bloc
+    placement_bloc(choix_num_bloc, tableau_blocs, plateau, coord_x, coord_y);
+    affichage_plateau(plateau,hauteur_plateau,largeur_plateau);
+
+    printf("\nLes coordonnées sont [%d, %d]\n", coord_x, coord_y);
+
+
+
+    //Desalocation de l'espace mémoire dynamique
+    desalocation_tableau2D(plateau, hauteur_plateau);
  
     return 0;
 }

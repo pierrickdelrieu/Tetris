@@ -33,6 +33,10 @@ void creation_plateau_blocs(int *** plateau_bloc, int choix_forme);
 
 - affichage et saisie choix bloque politique 2
 
+- saisie coordonnées
+
+- placement blocs sur le plateau
+
 FAIT
 
 
@@ -52,8 +56,6 @@ FAIT
 A FAIRE
 - verification de la validité d'un bloc
 
-- placement bloc sur le plateau
-
 - calcul du score
 
 
@@ -63,6 +65,8 @@ QUESTION
 
 - gestion de la supression des lignes, où mettre les blocs une fois une lignes pleine ...
 
+- placement des blocs ...?
+
 - type de calcul de score
 
-- affichage aleatoire, proposer un reaffichage de blocs aléatoire
+- affichage aleatoire, proposer un reaffichage de blocs aléatoire ?

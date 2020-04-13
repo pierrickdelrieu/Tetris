@@ -277,7 +277,7 @@ void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_bloc
         printf("%c ", ESPACE);
     }
     printf("      ");
-    printf("%d ",num_bloc3);
+    printf("%d\n",num_bloc3);
 
 
     //desalocation memoire des blocs afficher precedemment
@@ -288,9 +288,9 @@ void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_bloc
 
 int affichage_plateau_blocs_politique1(int** plateau, int hauteur_plateau, int largeur_plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
 {
-    int num_bloc = 1;
-    int choix_num_bloc;
-    int erreur = 0;
+    int num_bloc = 1; //initialisation du numeros des blocs
+    int choix_num_bloc; //choix saisie par l'utilisateur
+    int erreur = 0; //0 si pas d'erreur et 1 sinon pour afficher un message
 
     do
     {
@@ -314,7 +314,7 @@ int affichage_plateau_blocs_politique1(int** plateau, int hauteur_plateau, int l
         //affichage message d'erreur
         if (erreur == 1)
         {
-            printf("Erreur de saisie (plus de blocs disponibles)\n");
+            printf("\nERREUR");
             erreur = 0;
         }
 
@@ -351,24 +351,27 @@ int affichage_plateau_blocs_politique1(int** plateau, int hauteur_plateau, int l
 int affichage_plateau_blocs_politique2(int** plateau, int hauteur_plateau, int largeur_plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
 {
     int num_bloc1, num_bloc2, num_bloc3;
-    int choix_num_bloc;
-    int erreur = 0;
+    int choix_num_bloc = 0; //initialisation a 0 rentrer dans la condition qui suit
+    int erreur = 0; //0 si pas d'erreur et 1 sinon pour afficher un message
 
     do
     {
         affichage_plateau(plateau,hauteur_plateau,largeur_plateau);
 
-        num_bloc1 = 1 + (rand() % nombre_blocs);
-
-        do
+        if(choix_num_bloc == 0)
         {
-            num_bloc2 = 1 + (rand() % nombre_blocs);
-        }while(num_bloc2 == num_bloc1);
+            num_bloc1 = 1 + (rand() % nombre_blocs);
 
-        do
-        {
-            num_bloc3 = 1 + (rand() % nombre_blocs);
-        }while((num_bloc3 == num_bloc1) || (num_bloc3 == num_bloc2));
+            do
+            {
+                num_bloc2 = 1 + (rand() % nombre_blocs);
+            }while(num_bloc2 == num_bloc1);
+
+            do
+            {
+                num_bloc3 = 1 + (rand() % nombre_blocs);
+            }while((num_bloc3 == num_bloc1) || (num_bloc3 == num_bloc2));
+        }
 
         affichage_3_blocs(num_bloc1, num_bloc2, num_bloc3, tableau_blocs);
 
@@ -381,7 +384,80 @@ int affichage_plateau_blocs_politique2(int** plateau, int hauteur_plateau, int l
         supr_console();
     
 
-    }while (choix_num_bloc == 0);
+    }while ((choix_num_bloc == 0) || ((choix_num_bloc != num_bloc1) && (choix_num_bloc != num_bloc2) && (choix_num_bloc != num_bloc3)));
     
     return (choix_num_bloc);
+}
+
+
+void saisie_coord_bloc(int* x, int* y)
+{
+    //Les coordonnées prennet la valeur de -1 si lres coordonnées ne sont pas des lettres
+
+    char coordx;
+    char coordy;
+    int valide;
+    int i;
+
+    printf("\nSaisir les coordonnées du blocs : \n");
+
+    //saisie des coordonnées en y (num colonne)
+    i=0;
+
+    printf("          ligne : ");
+    scanf(" %c", &coordx);
+    fflush(stdin);
+
+    while((coordx != a + i) && (i < 26)) //condition de validité
+    {
+        i++;
+    }
+    if(i >= 26)
+    {
+        i = -1;
+    }
+
+    *x = i; //attribution a y un entier correspondant a la lettre saisie par l'utilisateur (a noter le plateau commence a l'indice 0)
+
+
+    //saisie des coordonnées en y (num colonne)
+    i=0;
+
+    printf("          colonne : ");
+    scanf(" %c", &coordy);
+    fflush(stdin);
+
+    while((coordy != A + i) && (i < 26)) //condition de validité
+    {
+        i++;
+    }
+
+    if(i >= 26)
+    {
+        i = -1;
+    }
+
+    
+    *y = i; //attribution a y un entier correspondant a la lettre saisie par l'utilisateur (a noter le plateau commence a l'indice 0)
+}
+
+
+void placement_bloc(int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int** plateau, int x , int y)
+{
+    Bloc bloc;
+    int i;
+    int j;
+
+    bloc = creation_struct_bloc(num_bloc, tableau_blocs);
+
+    for(i = 0; i < bloc.hauteur; i++)
+    {
+        for(j = 0; j < bloc.largeur; j++)
+        {
+            if(bloc.tableau[i][j] == CASE_PLEINE)
+            {
+                plateau[y - bloc.hauteur+1 + i][x + j] = CASE_PLEINE;
+            }
+        }
+    }
 }

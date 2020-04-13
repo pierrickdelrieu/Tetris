@@ -76,7 +76,8 @@ void desalocation_struct_bloc(Bloc bloc);
 void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 int affichage_plateau_blocs_politique1(int** plateau, int hauteur_plateau, int largeur_plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs);
 int affichage_plateau_blocs_politique2(int** plateau, int hauteur_plateau, int largeur_plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs);
-
+void saisie_coord_bloc(int* x, int* y);
+void placement_bloc(int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int** plateau, int x , int y);
 
 
 //....................MENU....................
