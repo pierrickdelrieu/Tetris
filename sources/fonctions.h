@@ -22,14 +22,15 @@
 #define POINT 46
 #define A 65 //le code ascii des lettres en majuscules est dans l'ordre A+i
 #define a 97 //le code ascii des lettres en minuscules est dans l'ordre a+i
-#define CHIFFRE 49
+#define CHIFFRE 49 //1
 #define ESPACE 32
 #define COTE_LATERAL 124 // |
 #define COTE_TRANSVERSAL 61 // =
 
 
 
-//..................GENERAL...................
+//..................GENERAL................... (fonctions usuels)
+#define NOMBRE_ESSAI_SAISIE 3 //nombre d'essai de saisie des coordonnées avant que la boucle de jeu quitte
 typedef struct
 {
     int x;
@@ -41,16 +42,16 @@ typedef struct
     int hauteur;
     int largeur;
 } Tableau2D;
-void creation_tableau_2D(int*** tableau, int ligne, int colonne); //création plateau dynamique
-void desalocation_tableau2D(int** tableau, int ligne);
+void creation_tableau_2D(int*** tableau, int ligne, int colonne); //allocation dynamique
+void desalocation_tableau2D(int** tableau, int ligne); //dealocation dynamique
 
 
 
 //..................PLATEAU...................
-#define TAILLE_MIN_PLATEAU 19
-#define CASE_VIDE_JOUABLE 0
-#define CASE_PLEINE 1
-#define CASE_VIDE_INJOUABLE -1
+#define TAILLE_MIN_PLATEAU 19 //taille minimal du plateau de jeu
+#define CASE_VIDE_JOUABLE 0 //element du plateau de jeu
+#define CASE_PLEINE 1 //element du plateau de jeu
+#define CASE_VIDE_INJOUABLE -1 //element du plateau de jeu
 #define PLATEAU_CERCLE 1
 #define PLATEAU_LOSANGE 2
 #define PLATEAU_TRIANGLE 3
@@ -67,10 +68,10 @@ void annuler_colonne(Tableau2D plateau, int num_colonne);
 
 
 //....................BLOC.....................
-#define HAUTEUR_TAB_BLOCS 20
-#define LARGEUR_TAB_BLOCS 50
-#define TAILLE_MAX_BLOC 5
-#define DELIMITATION_BLOC 3 //delimitation blocs dans le tableau (remplace les #)
+#define HAUTEUR_TAB_BLOCS 20 //hauteur du tableau des blocs (fichiers csv)
+#define LARGEUR_TAB_BLOCS 50 //largeur du tableau des blocs (fichiers csv)
+#define TAILLE_MAX_BLOC 5 //taille des blocs dans le fichier csv
+#define DELIMITATION_BLOC 3 //delimitation blocs dans le tableau (remplace les # du fichier csv) - taille réelle
 
 void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int forme);
 int hauteur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
@@ -80,7 +81,7 @@ void desalocation_struct_bloc(Tableau2D bloc);
 void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 int affichage_plateau_blocs_politique1(Tableau2D plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs);
 int affichage_plateau_blocs_politique2(Tableau2D plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs);
-void saisie_coord_bloc(Coord* choix_coord, Tableau2D plateau);
+void saisie_coord_bloc(Coord* choix_coord, Tableau2D plateau, int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 void placement_bloc(int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], Tableau2D plateau, Coord choix_coord);
 int validite_coord_bloc(Coord choix_coord, int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], Tableau2D plateau);
 

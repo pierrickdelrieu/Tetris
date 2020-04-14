@@ -58,15 +58,4 @@ A FAIRE
 
 - calcul du score
 
-
-
-QUESTION
-- utilisation tableau 3D pour les blocs (pas necessaire pour moi) vraiment obligatoire ?
-
-- gestion de la supression des lignes, où mettre les blocs une fois une lignes pleine ...
-
-- placement des blocs ...?
-
-- type de calcul de score
-
-- affichage aleatoire, proposer un reaffichage de blocs aléatoire ?
+- descendre ligne

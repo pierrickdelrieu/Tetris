@@ -13,21 +13,20 @@ int main()
 {
     Tableau2D plateau;
     int taille; //taille plateau saisie par l'utilisateur
-    int hauteur_plateau,largeur_plateau;
-    int choix_forme;
+    int choix_forme; //choix de la forme du plateau de jeu
     int choix_politique_blocs; //1 pour afficher l'ensemble des blocs; 2 pour afficher 3 blocs aléatoirement
     int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS];
-    int nombre_blocs;
+    int nombre_blocs; //nombre de blocs dans le plateau en fonction de la forme choisie
 
     
                     //....................................MENU....................................
     
-    //Saisie sécurisée choix forme plateau et taille du tableau et politique d'affichage
+    //Saisie utilisateur (sécurisé) 
     supr_console();
-    ecran_accueil();
-    choix_plateau(&choix_forme);
-    saisie_taille(&taille, choix_forme);
-    choix_politique_suggestion_blocs(&choix_politique_blocs);
+    ecran_accueil(); //affichage commencer a jouer ou regles du jeu
+    choix_plateau(&choix_forme); //choix de la forme du plateau de jeu
+    saisie_taille(&taille, choix_forme); //saisie de la taille du plateau de jeu
+    choix_politique_suggestion_blocs(&choix_politique_blocs); //choix de la taille du plateau de jeu
 
     //Allocation et initialisation en fonction du choix de la forme du plateau
     if(choix_forme == PLATEAU_CERCLE) //cercle
@@ -52,21 +51,21 @@ int main()
         nombre_blocs = 31;
     }
     
-    
+    creation_tableau_blocs(tableau_blocs, choix_forme); //creation du tableau de blocs a partir du fichier csv
     
     
                     //....................................JEU....................................
 
     //Initialisation
-    creation_tableau_blocs(tableau_blocs, choix_forme);
-    int choix_num_bloc;
-    Coord choix_coord; //saisie par l'utilisateur
-    int continuer = 1; 
+    int choix_num_bloc; //saisie utilisateur choix du numero du bloc
+    Coord choix_coord; //saisie par l'utilisateur des coordonée en x et en y sous forme d'un caractere retranscrit en entier
+    int continuer = 1; //condition d'arret (nombre d'essai max de saisie de coordonnées)
 
     //Boucle de jeu
     do
     {
-        continuer = 1;
+        continuer = 1; //initialisation de la condition d'arret
+
         //affichage des blocs + plateau
         if(choix_politique_blocs == 1) //affichage de l'ensemble des blocs
         {
@@ -85,10 +84,9 @@ int main()
                 printf("\nERREUR DE SAISIE %d",continuer-1);
             }
 
-            saisie_coord_bloc(&choix_coord, plateau);
+            saisie_coord_bloc(&choix_coord, plateau, choix_num_bloc, tableau_blocs);
             continuer ++;
-            // printf("Les coordonnées sont %d; %d\n",choix_coord.x, choix_coord.y); //verif test
-        }while((continuer <= 3) && (validite_coord_bloc(choix_coord, choix_num_bloc, tableau_blocs, plateau) == 0));
+        }while((continuer <= NOMBRE_ESSAI_SAISIE) && (validite_coord_bloc(choix_coord, choix_num_bloc, tableau_blocs, plateau) == 0)); 
 
         supr_console();
 
@@ -99,7 +97,16 @@ int main()
             affichage_plateau(plateau);
         }
         supr_console();
-    }while(continuer <= 3);
+    }while(continuer <= NOMBRE_ESSAI_SAISIE);
+
+
+                    //...............................AFFICHAGE.RESULTAT...............................
+
+    if(continuer > NOMBRE_ESSAI_SAISIE)
+    {
+        printf("Vous avez dépassé le nombres d'essai\n");
+    }
+
 
 
 
