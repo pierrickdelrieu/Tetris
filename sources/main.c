@@ -11,7 +11,7 @@
 
 int main()
 {
-    int** plateau = NULL; //initialisation du pointeur du tableau 2D
+    Tableau2D plateau;
     int taille; //taille plateau saisie par l'utilisateur
     int hauteur_plateau,largeur_plateau;
     int choix_forme;
@@ -32,23 +32,23 @@ int main()
     //Allocation et initialisation en fonction du choix de la forme du plateau
     if(choix_forme == PLATEAU_CERCLE) //cercle
     {
-        plateau = creation_plateau_cercle(taille);
-        hauteur_plateau = taille;
-        largeur_plateau = taille;
+        plateau.tableau = creation_plateau_cercle(taille);
+        plateau.hauteur = taille;
+        plateau.largeur = taille;
         nombre_blocs = 32;
     }
     else if (choix_forme == PLATEAU_LOSANGE) //losange
     {
-        plateau = creation_plateau_losange(taille);
-        hauteur_plateau = taille;
-        largeur_plateau = taille;
+        plateau.tableau = creation_plateau_losange(taille);
+        plateau.hauteur = taille;
+        plateau.largeur = taille;
         nombre_blocs = 34;
     }
     else //triangle
     {
-        plateau = creation_plateau_triangle(taille);
-        hauteur_plateau = taille/2;
-        largeur_plateau = taille;
+        plateau.tableau = creation_plateau_triangle(taille);
+        plateau.hauteur = taille/2;
+        plateau.largeur = taille;
         nombre_blocs = 31;
     }
     
@@ -60,35 +60,52 @@ int main()
     //Initialisation
     creation_tableau_blocs(tableau_blocs, choix_forme);
     int choix_num_bloc;
-    int coord_x, coord_y;
+    Coord choix_coord; //saisie par l'utilisateur
+    int continuer = 1; 
 
     //Boucle de jeu
-    
-    //affichage des blocs + plateau
-    if(choix_politique_blocs == 1) //affichage de l'ensemble des blocs
+    do
     {
-        choix_num_bloc = affichage_plateau_blocs_politique1(plateau, hauteur_plateau, largeur_plateau, tableau_blocs, nombre_blocs);
-    }
-    else if(choix_politique_blocs == 2) //affichage de trois blocs aléatoire
-    {
-        choix_num_bloc = affichage_plateau_blocs_politique2(plateau, hauteur_plateau, largeur_plateau, tableau_blocs, nombre_blocs);
-    }
+        continuer = 1;
+        //affichage des blocs + plateau
+        if(choix_politique_blocs == 1) //affichage de l'ensemble des blocs
+        {
+            choix_num_bloc = affichage_plateau_blocs_politique1(plateau, tableau_blocs, nombre_blocs);
+        }
+        else if(choix_politique_blocs == 2) //affichage de trois blocs aléatoire
+        {
+            choix_num_bloc = affichage_plateau_blocs_politique2(plateau, tableau_blocs, nombre_blocs);
+        }
 
-    //Saisie coordonnée bloc
-    affichage_plateau(plateau,hauteur_plateau,largeur_plateau);
-    saisie_coord_bloc(&coord_x, &coord_y);
-    supr_console();
+        //Saisie coordonnée bloc
+        do
+        {
+            if(continuer > 1)
+            {
+                printf("\nERREUR DE SAISIE %d",continuer-1);
+            }
 
-    //Placement du bloc
-    placement_bloc(choix_num_bloc, tableau_blocs, plateau, coord_x, coord_y);
-    affichage_plateau(plateau,hauteur_plateau,largeur_plateau);
+            saisie_coord_bloc(&choix_coord, plateau);
+            continuer ++;
+            // printf("Les coordonnées sont %d; %d\n",choix_coord.x, choix_coord.y); //verif test
+        }while((continuer <= 3) && (validite_coord_bloc(choix_coord, choix_num_bloc, tableau_blocs, plateau) == 0));
 
-    printf("\nLes coordonnées sont [%d, %d]\n", coord_x, coord_y);
+        supr_console();
+
+        //Placement du bloc
+        if(validite_coord_bloc(choix_coord, choix_num_bloc, tableau_blocs, plateau) == 1)
+        {
+            placement_bloc(choix_num_bloc, tableau_blocs, plateau, choix_coord);
+            affichage_plateau(plateau);
+        }
+        supr_console();
+    }while(continuer <= 3);
+
 
 
 
     //Desalocation de l'espace mémoire dynamique
-    desalocation_tableau2D(plateau, hauteur_plateau);
+    desalocation_tableau2D(plateau.tableau,plateau.hauteur);
  
     return 0;
 }

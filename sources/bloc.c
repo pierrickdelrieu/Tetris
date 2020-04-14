@@ -130,7 +130,7 @@ int largeur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOC
     return (largeur);
 }
 
-Bloc creation_struct_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
+Tableau2D creation_struct_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
 {
     // Calcul rang du bloc dans le tableau
     int rang = 0;
@@ -147,7 +147,7 @@ Bloc creation_struct_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR
     int y = 4 + (5*rang) ;
 
     
-    Bloc bloc; //declaration d'une variable de type bloc
+    Tableau2D bloc; //declaration d'une variable de type bloc
     int i,j; //compteur
 
     bloc.hauteur = hauteur_bloc(num_bloc,tab_blocs); //initialisation hauteur du bloc dans la structure
@@ -169,7 +169,7 @@ Bloc creation_struct_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR
 
 
 
-void desalocation_struct_bloc(Bloc bloc)
+void desalocation_struct_bloc(Tableau2D bloc)
 {
     desalocation_tableau2D(bloc.tableau, bloc.hauteur);
 }
@@ -178,7 +178,7 @@ void desalocation_struct_bloc(Bloc bloc)
 
 void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
 {
-    Bloc bloc1, bloc2, bloc3; //initialisation des structures Bloc
+    Tableau2D bloc1, bloc2, bloc3; //initialisation des structures Bloc
     int i,j; //compteur
     int cpt; //cpt utilisé dans le calcul pour afficher les espaces
     int cpt_espace; //cpt d'espace dans le boucle while
@@ -286,15 +286,16 @@ void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_bloc
     desalocation_struct_bloc(bloc3);
 }
 
-int affichage_plateau_blocs_politique1(int** plateau, int hauteur_plateau, int largeur_plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
+int affichage_plateau_blocs_politique1(Tableau2D plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
 {
     int num_bloc = 1; //initialisation du numeros des blocs
     int choix_num_bloc; //choix saisie par l'utilisateur
     int erreur = 0; //0 si pas d'erreur et 1 sinon pour afficher un message
+    int valide;
 
     do
     {
-        affichage_plateau(plateau,hauteur_plateau,largeur_plateau);
+        affichage_plateau(plateau);
 
         //affichage des numeros blocs en prenant en compte l'affichage de fin des blocs
         if(num_bloc + 2 <= nombre_blocs)
@@ -320,35 +321,37 @@ int affichage_plateau_blocs_politique1(int** plateau, int hauteur_plateau, int l
 
         //saisie utilisateur
         printf("\nChoisir un bloc \n(taper 0 pour consulter les blocs suivants ou 40 pour consulter les blocs précedents) : ");
-        scanf("%d", &choix_num_bloc);
+        valide = scanf("%d", &choix_num_bloc);
         fflush(stdin);
 
-        supr_console();
 
 
         //blocs suivants ou blocs précédents
-        if((choix_num_bloc == 0) && (num_bloc+2 <= nombre_blocs))
+        if((valide == 1) && (choix_num_bloc == 0) && (num_bloc+2 <= nombre_blocs))
         {
             num_bloc = num_bloc + 3;
+            supr_console();
         }
-        else if((choix_num_bloc == 40) && (num_bloc != 1))
+        else if((valide == 1) && (choix_num_bloc == 40) && (num_bloc != 1))
         {
             num_bloc = num_bloc - 3;
+            supr_console();
         }
-        else
+        else if((valide != 1) || ((choix_num_bloc != num_bloc) && (choix_num_bloc != num_bloc + 1) && (choix_num_bloc != num_bloc + 2)))
         {
             erreur = 1;
+            supr_console();
         }
         
     
 
-    }while ((choix_num_bloc == 0) || (choix_num_bloc == 40) || ((choix_num_bloc != num_bloc) && (choix_num_bloc != num_bloc + 1) && (choix_num_bloc != num_bloc + 2)));
+    }while ((choix_num_bloc == 0) || (choix_num_bloc == 40) || (erreur == 1));
     
     return (choix_num_bloc);
 }
 
 
-int affichage_plateau_blocs_politique2(int** plateau, int hauteur_plateau, int largeur_plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
+int affichage_plateau_blocs_politique2(Tableau2D plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
 {
     int num_bloc1, num_bloc2, num_bloc3;
     int choix_num_bloc = 0; //initialisation a 0 rentrer dans la condition qui suit
@@ -356,7 +359,7 @@ int affichage_plateau_blocs_politique2(int** plateau, int hauteur_plateau, int l
 
     do
     {
-        affichage_plateau(plateau,hauteur_plateau,largeur_plateau);
+        affichage_plateau(plateau);
 
         if(choix_num_bloc == 0)
         {
@@ -375,22 +378,32 @@ int affichage_plateau_blocs_politique2(int** plateau, int hauteur_plateau, int l
 
         affichage_3_blocs(num_bloc1, num_bloc2, num_bloc3, tableau_blocs);
 
-       
+        //affichage message d'erreur
+        if(erreur == 1)
+        {
+            printf("\nERREUR");
+            erreur = 0;
+        }
 
         //saisie utilisateur
         printf("\nChoisir un bloc \n(taper 0 pour consulter d'autre blocs aléatoire) : ");
         scanf("%d", &choix_num_bloc);
         fflush(stdin);
-        supr_console();
+
+        if((choix_num_bloc != num_bloc1) && (choix_num_bloc != num_bloc2) && (choix_num_bloc != num_bloc3))
+        {
+            erreur = 1;
+            supr_console();
+        }
     
 
-    }while ((choix_num_bloc == 0) || ((choix_num_bloc != num_bloc1) && (choix_num_bloc != num_bloc2) && (choix_num_bloc != num_bloc3)));
+    }while ((choix_num_bloc == 0) || (erreur == 1));
     
     return (choix_num_bloc);
 }
 
 
-void saisie_coord_bloc(int* x, int* y)
+void saisie_coord_bloc(Coord* choix_coord, Tableau2D plateau)
 {
     //Les coordonnées prennet la valeur de -1 si lres coordonnées ne sont pas des lettres
 
@@ -408,16 +421,16 @@ void saisie_coord_bloc(int* x, int* y)
     scanf(" %c", &coordx);
     fflush(stdin);
 
-    while((coordx != a + i) && (i < 26)) //condition de validité
+    while((coordx != a + i) && (i < plateau.largeur)) //condition de validité
     {
         i++;
     }
-    if(i >= 26)
+    if(i >= plateau.largeur)
     {
         i = -1;
     }
 
-    *x = i; //attribution a y un entier correspondant a la lettre saisie par l'utilisateur (a noter le plateau commence a l'indice 0)
+    choix_coord->x = i; //attribution a y un entier correspondant a la lettre saisie par l'utilisateur (a noter le plateau commence a l'indice 0)
 
 
     //saisie des coordonnées en y (num colonne)
@@ -427,24 +440,24 @@ void saisie_coord_bloc(int* x, int* y)
     scanf(" %c", &coordy);
     fflush(stdin);
 
-    while((coordy != A + i) && (i < 26)) //condition de validité
+    while((coordy != A + i) && (i < plateau.hauteur)) //condition de validité
     {
         i++;
     }
 
-    if(i >= 26)
+    if(i >= plateau.hauteur)
     {
         i = -1;
     }
 
     
-    *y = i; //attribution a y un entier correspondant a la lettre saisie par l'utilisateur (a noter le plateau commence a l'indice 0)
+    choix_coord->y = i; //attribution a y un entier correspondant a la lettre saisie par l'utilisateur (a noter le plateau commence a l'indice 0)
 }
 
 
-void placement_bloc(int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int** plateau, int x , int y)
+void placement_bloc(int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], Tableau2D plateau,Coord choix_coord)
 {
-    Bloc bloc;
+    Tableau2D bloc;
     int i;
     int j;
 
@@ -456,8 +469,60 @@ void placement_bloc(int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_T
         {
             if(bloc.tableau[i][j] == CASE_PLEINE)
             {
-                plateau[y - bloc.hauteur+1 + i][x + j] = CASE_PLEINE;
+                plateau.tableau[choix_coord.y - bloc.hauteur + 1 + i][choix_coord.x + j] = CASE_PLEINE;
             }
         }
     }
+
+    desalocation_struct_bloc(bloc);
+    printf("placement\n");
+}
+
+
+int validite_coord_bloc(Coord choix_coord, int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], Tableau2D plateau)
+{
+    //retour 1 si bloc + coord sont valide et 0 sinon
+
+    int valide = 1; //contient la valeur de retour
+    
+    printf("validité debut\n");
+
+    // verif coordonné
+    if((choix_coord.x == -1) || (choix_coord.y == -1)) //si les coordonnées ne sont pas dans la taille du tableau
+    {
+        valide = 0;
+        printf("validité x ou y = -1\n");
+    }
+    else
+    {
+        Tableau2D bloc;
+        int i, j;
+
+        bloc = creation_struct_bloc(num_bloc, tableau_blocs);
+
+        //verification
+        for(j=0; j<bloc.largeur; j++)
+        {
+            for(i=0; i<bloc.hauteur; i++)
+            {
+                if(bloc.tableau[i][j] == CASE_PLEINE) //verif qui si la case necessite une verif
+                {
+                    if((choix_coord.y - bloc.hauteur + i < 0) && (choix_coord.x + j < plateau.largeur)) //verif depassement de taille
+                    {
+                        valide = 0;
+                    }
+                    else if (plateau.tableau[choix_coord.y - bloc.hauteur + i][choix_coord.x + j] != CASE_VIDE_JOUABLE) // verif case jouable
+                    {   
+                        valide = 0;
+                    }
+                }
+            }
+        }
+
+         desalocation_struct_bloc(bloc);
+    }
+
+    printf("validité fin\n");
+
+    return (valide);
 }

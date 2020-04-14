@@ -110,13 +110,13 @@ int** creation_plateau_cercle(int taille)
 
 
 
-void affichage_plateau(int** plateau, int hauteur, int largeur)
+void affichage_plateau(Tableau2D plateau)
 {
     //affichage en fonctions des trois types de plateau (losange, cercle, triangle)
     
     int i,j;
-    int hauteur_totale_plateau = hauteur + 3; //hauteur totale = hauteur + colonnes numeros + 2 lignes de contours plateau
-    int largeur_totale_plateau = largeur + 3; //largeur totale = largeur + lignes numeros + 2 colonnes de contours plateau
+    int hauteur_totale_plateau = plateau.hauteur + 3; //hauteur totale = hauteur + colonnes numeros + 2 lignes de contours plateau
+    int largeur_totale_plateau = plateau.largeur + 3; //largeur totale = largeur + lignes numeros + 2 colonnes de contours plateau
 
     
     for(i=0; i<hauteur_totale_plateau; i++)
@@ -158,15 +158,15 @@ void affichage_plateau(int** plateau, int hauteur, int largeur)
             //Affichage du contenu du plateau
             else
             {
-                if(plateau[i-2][j-2] == CASE_VIDE_JOUABLE)
+                if(plateau.tableau[i-2][j-2] == CASE_VIDE_JOUABLE)
                 {
                     printf("%c ",POINT);
                 }
-                else if(plateau[i-2][j-2] == CASE_VIDE_INJOUABLE)
+                else if(plateau.tableau[i-2][j-2] == CASE_VIDE_INJOUABLE)
                 {
                     printf("%c ",ESPACE);
                 }
-                else if(plateau[i-2][j-2] == CASE_PLEINE)
+                else if(plateau.tableau[i-2][j-2] == CASE_PLEINE)
                 {
                     printf("◼︎ "); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
                 }
@@ -177,16 +177,16 @@ void affichage_plateau(int** plateau, int hauteur, int largeur)
 }
 
 
-int etat_ligne(int** plateau, int largeur, int num_ligne)
+int etat_ligne(Tableau2D plateau, int num_ligne)
 {
      //retourne 1 si la colonne est pleine, 0 sinon
     
     int j; //compteur
     int retour = 1; //valeur de retour initialisé à 1 (on considere que le plateau est plein)
     
-    for(j=0; j<largeur; j++)
+    for(j=0; j<plateau.largeur; j++)
     {
-        if(plateau[num_ligne][j] == CASE_VIDE_JOUABLE)
+        if(plateau.tableau[num_ligne][j] == CASE_VIDE_JOUABLE)
         {
             retour = 0;
         }
@@ -196,16 +196,16 @@ int etat_ligne(int** plateau, int largeur, int num_ligne)
 }
 
 
-int etat_colonne(int** plateau, int hauteur, int num_colonne)
+int etat_colonne(Tableau2D plateau, int num_colonne)
 {
      //retourne 1 si la colonne est pleine, 0 sinon
     
     int i; //compteur
     int retour = 1; //valeur de retour initialisé à 1 (on considere que le plateau est plein)
     
-    for(i=0; i<hauteur; i++)
+    for(i=0; i<plateau.hauteur; i++)
     {
-        if(plateau[i][num_colonne] == CASE_VIDE_JOUABLE)
+        if(plateau.tableau[i][num_colonne] == CASE_VIDE_JOUABLE)
         {
             retour = 0;
         }
@@ -214,29 +214,29 @@ int etat_colonne(int** plateau, int hauteur, int num_colonne)
     return (retour);
 }
 
-void annuler_ligne(int** plateau, int largeur, int num_ligne)
+void annuler_ligne(Tableau2D plateau, int num_ligne)
 {
     int j; //compteur
     
-    for(j=0; j<largeur; j++)
+    for(j=0; j<plateau.largeur; j++)
     {
-        if(plateau[num_ligne][j] == CASE_PLEINE)
+        if(plateau.tableau[num_ligne][j] == CASE_PLEINE)
         {
-            plateau[num_ligne][j] = CASE_VIDE_JOUABLE;
+            plateau.tableau[num_ligne][j] = CASE_VIDE_JOUABLE;
         }
     }
 }
 
 
-void annuler_colonne(int** plateau, int hauteur, int num_colonne)
+void annuler_colonne(Tableau2D plateau, int num_colonne)
 {
     int i; //compteur
 
-    for(i=0; i<hauteur; i++)
+    for(i=0; i<plateau.hauteur; i++)
     {
-        if(plateau[i][num_colonne] == CASE_PLEINE)
+        if(plateau.tableau[i][num_colonne] == CASE_PLEINE)
         {
-            plateau[i][num_colonne] = CASE_VIDE_JOUABLE;
+            plateau.tableau[i][num_colonne] = CASE_VIDE_JOUABLE;
         }
     }
 }

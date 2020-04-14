@@ -13,6 +13,7 @@ void ecran_accueil(void)
 {
     int choix;
     int cpt = 0;
+    int valide;
     
     do
     {
@@ -32,11 +33,11 @@ void ecran_accueil(void)
         }
         
         printf("     SAISIR : ");
-        scanf(" %d",&choix); // saisie de 1 ou 2
+        valide = scanf("%d",&choix); // saisie de 1 ou 2
         fflush(stdin);//suprimer le buffer d'entré après avoir saisie la valeur pour éviter de faire crasher le programme (boucle infinie)
         cpt++;
         supr_console();
-    }while((choix != 1) && (choix != 2));
+    }while((valide == 1) && (choix != 1) && (choix != 2));
     
     //Affichage des régles du jeu
     if(choix == 2)
@@ -53,8 +54,7 @@ void ecran_accueil(void)
             supr_console();
             
         }while(choix != 1);
-    }
-    
+    }    
 }
 
 
