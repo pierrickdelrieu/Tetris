@@ -286,7 +286,7 @@ void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_bloc
     desalocation_struct_bloc(bloc3);
 }
 
-int affichage_plateau_blocs_politique1(Tableau2D plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
+int affichage_plateau_blocs_politique1(Tableau2D plateau, Score score, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
 {
     int num_bloc = 1; //initialisation du numeros des blocs
     int choix_num_bloc; //choix saisie par l'utilisateur
@@ -295,7 +295,7 @@ int affichage_plateau_blocs_politique1(Tableau2D plateau, int tableau_blocs[HAUT
 
     do
     {
-        affichage_plateau(plateau);
+        affichage_plateau(plateau,score);
 
         //affichage des numeros blocs en prenant en compte l'affichage de fin des blocs
         if(num_bloc + 2 <= nombre_blocs)
@@ -351,7 +351,7 @@ int affichage_plateau_blocs_politique1(Tableau2D plateau, int tableau_blocs[HAUT
 }
 
 
-int affichage_plateau_blocs_politique2(Tableau2D plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
+int affichage_plateau_blocs_politique2(Tableau2D plateau, Score score, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
 {
     int num_bloc1, num_bloc2, num_bloc3; //declaration des numéros des trois blocs que l'on va afficher
     int choix_num_bloc = 0; //initialisation a 0 rentrer dans la condition qui suit
@@ -373,7 +373,7 @@ int affichage_plateau_blocs_politique2(Tableau2D plateau, int tableau_blocs[HAUT
     //securisation de la saisie de un des trois blocs afficher 
     do
     {
-        affichage_plateau(plateau);
+        affichage_plateau(plateau, score);
 
         affichage_3_blocs(num_bloc1, num_bloc2, num_bloc3, tableau_blocs);
 
@@ -424,11 +424,11 @@ void saisie_coord_bloc(Coord* choix_coord, Tableau2D plateau, int num_bloc, int 
     scanf(" %c", &coordx);
     fflush(stdin);
 
-    while((coordx != a + i) && (i < plateau.largeur)) ////verif si lettre saisie dans le plateau
+    while((coordx != a + i) && (i < plateau.largeur)) //verif si lettre saisie dans le plateau
     {
         i++;
     }
-    if(i >= plateau.largeur - bloc.largeur - 1) //verif si le coord est valide
+    if(i > plateau.largeur - bloc.largeur) //verif si le coord est valide
     {
         i = -1;
     }

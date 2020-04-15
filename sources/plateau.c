@@ -110,7 +110,7 @@ int** creation_plateau_cercle(int taille)
 
 
 
-void affichage_plateau(Tableau2D plateau)
+void affichage_plateau(Tableau2D plateau, Score score)
 {
     //affichage en fonctions des trois types de plateau (losange, cercle, triangle)
     
@@ -172,6 +172,15 @@ void affichage_plateau(Tableau2D plateau)
                 }
             }
         }
+
+
+        //affichage du score
+        if(i == 10)
+        {
+            printf("         Score : %d", score.valeur);
+        }
+
+
         printf("\n"); //retour à la ligne après l'affichage d'une ligne
     }
 }
@@ -179,7 +188,7 @@ void affichage_plateau(Tableau2D plateau)
 
 int etat_ligne(Tableau2D plateau, int num_ligne)
 {
-     //retourne 1 si la colonne est pleine, 0 sinon
+     //retourne 1 si la ligne est pleine, 0 sinon
     
     int j; //compteur
     int retour = 1; //valeur de retour initialisé à 1 (on considere que le plateau est plein)
@@ -214,7 +223,7 @@ int etat_colonne(Tableau2D plateau, int num_colonne)
     return (retour);
 }
 
-void annuler_ligne(Tableau2D plateau, int num_ligne)
+void annuler_ligne(Tableau2D plateau, int num_ligne, Score* score)
 {
     int j; //compteur
     
@@ -223,12 +232,17 @@ void annuler_ligne(Tableau2D plateau, int num_ligne)
         if(plateau.tableau[num_ligne][j] == CASE_PLEINE)
         {
             plateau.tableau[num_ligne][j] = CASE_VIDE_JOUABLE;
+
+            if(score->validite == 1)
+            {
+                score->valeur = score->valeur + 1;
+            }
         }
     }
 }
 
 
-void annuler_colonne(Tableau2D plateau, int num_colonne)
+void annuler_colonne(Tableau2D plateau, int num_colonne, Score* score)
 {
     int i; //compteur
 
@@ -237,6 +251,63 @@ void annuler_colonne(Tableau2D plateau, int num_colonne)
         if(plateau.tableau[i][num_colonne] == CASE_PLEINE)
         {
             plateau.tableau[i][num_colonne] = CASE_VIDE_JOUABLE;
+
+            score->valeur = score->valeur + 1;
+        }
+    }
+}
+
+void empilement_lignes(Tableau2D plateau,int num_ligne, Score* score)
+{
+    //l'empilement de ligne et une copie de la ligne qui prècède sur la ligne qui vient d'etre supprimer
+
+    int i,j; //compteur
+
+
+    for(i=num_ligne; i >= 0; i--)
+    {
+        if(i == num_ligne)
+        {
+            score->validite = 1;
+        }
+        else
+        {
+            score->validite = 0;
+        }
+        
+        
+        annuler_ligne(plateau, i, score); //annulation de la ligne + sans calcul score
+        
+        if(i != 0)
+        {
+            //copie de la ligne precedente dans la ligne actuelle
+            for(j=0; j<plateau.largeur; j++)
+            {
+                if(plateau.tableau[i-1][j] == CASE_PLEINE)
+                {
+                    if(plateau.tableau[i][j] == CASE_VIDE_JOUABLE)
+                    {
+                        plateau.tableau[i][j] = CASE_PLEINE;
+                    }
+                    else
+                    {
+                        plateau.tableau[i-1][j] = 3;
+                    }                
+                }
+            }
+        }
+    }
+
+    //reabilitation des trois en case pleine
+    for(i=num_ligne; i>0; i--)
+    {
+        for(j=0; j<plateau.largeur; j++)
+        {
+            if(plateau.tableau[i][j] == 3)
+            {
+                plateau.tableau[i][j] = CASE_PLEINE;
+            }
+            
         }
     }
 }

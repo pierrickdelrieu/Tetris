@@ -42,6 +42,12 @@ typedef struct
     int hauteur;
     int largeur;
 } Tableau2D;
+typedef struct
+{
+    int valeur; //contient la valeur du score
+    int validite; //1 si le score doit etre calculer et 0 sinon
+} Score;
+
 void creation_tableau_2D(int*** tableau, int ligne, int colonne); //allocation dynamique
 void desalocation_tableau2D(int** tableau, int ligne); //dealocation dynamique
 
@@ -59,12 +65,12 @@ void desalocation_tableau2D(int** tableau, int ligne); //dealocation dynamique
 int** creation_plateau_losange(int taille);
 int** creation_plateau_triangle(int taille);
 int** creation_plateau_cercle(int taille);
-void affichage_plateau(Tableau2D plateau);
+void affichage_plateau(Tableau2D plateau, Score score);
 int etat_ligne(Tableau2D plateau, int num_ligne);
 int etat_colonne(Tableau2D plateau, int num_colonne);
-void annuler_ligne(Tableau2D plateau, int num_ligne);
-void annuler_colonne(Tableau2D plateau, int num_colonne);
-
+void annuler_ligne(Tableau2D plateau, int num_ligne, Score* score);
+void annuler_colonne(Tableau2D plateau, int num_colonne, Score* score);
+void empilement_lignes(Tableau2D plateau,int num_ligne, Score* score);
 
 
 //....................BLOC.....................
@@ -79,8 +85,8 @@ int largeur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOC
 Tableau2D creation_struct_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 void desalocation_struct_bloc(Tableau2D bloc);
 void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
-int affichage_plateau_blocs_politique1(Tableau2D plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs);
-int affichage_plateau_blocs_politique2(Tableau2D plateau, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs);
+int affichage_plateau_blocs_politique1(Tableau2D plateau, Score score, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs);
+int affichage_plateau_blocs_politique2(Tableau2D plateau, Score score, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs);
 void saisie_coord_bloc(Coord* choix_coord, Tableau2D plateau, int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS]);
 void placement_bloc(int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], Tableau2D plateau, Coord choix_coord);
 int validite_coord_bloc(Coord choix_coord, int num_bloc, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], Tableau2D plateau);
