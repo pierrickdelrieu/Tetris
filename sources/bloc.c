@@ -417,10 +417,10 @@ void saisie_coord_bloc(Coord* choix_coord, Tableau2D plateau, int num_bloc, int 
     //affichage
     printf("\nSaisir les coordonnées du blocs : \n");
 
-    //saisie des coordonnées en x (num ligne)
+    //saisie des coordonnées en x (num colonne)
     i=0;
 
-    printf("          ligne : ");
+    printf("          colonne : ");
     scanf(" %c", &coordx);
     fflush(stdin);
 
@@ -436,10 +436,10 @@ void saisie_coord_bloc(Coord* choix_coord, Tableau2D plateau, int num_bloc, int 
     choix_coord->x = i; //attribution a y un entier correspondant a la lettre saisie par l'utilisateur (a noter le plateau commence a l'indice 0)
 
 
-    //saisie des coordonnées en y (num colonne)
+    //saisie des coordonnées en y (num ligne)
     i=0;
 
-    printf("          colonne : ");
+    printf("          ligne : ");
     scanf(" %c", &coordy);
     fflush(stdin);
 

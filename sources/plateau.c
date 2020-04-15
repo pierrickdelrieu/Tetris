@@ -42,10 +42,10 @@ int** creation_plateau_triangle(int taille)
     int i,j; //compteur lignes et colonnes
     int** plateau = NULL; //retour = adresse du tableau 2D créé
     
-   creation_tableau_2D(&plateau, taille/2, taille);
+   creation_tableau_2D(&plateau, (taille/2)+1, taille);
     
     //Initialisation d'un tableau remplit de point et d'espace pour former un losange
-    for(i=0; i<taille/2; i++)
+    for(i=0; i<(taille/2)+1; i++)
     {
         for(j=0; j<taille; j++)
         {

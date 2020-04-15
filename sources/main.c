@@ -46,7 +46,7 @@ int main()
     else //triangle
     {
         plateau.tableau = creation_plateau_triangle(taille);
-        plateau.hauteur = taille/2;
+        plateau.hauteur = (taille/2) + 1;
         plateau.largeur = taille;
         nombre_blocs = 31;
     }
