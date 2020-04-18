@@ -118,7 +118,7 @@ void affichage_plateau(Tableau2D plateau, Score score)
     int hauteur_totale_plateau = plateau.hauteur + 3; //hauteur totale = hauteur + colonnes numeros + 2 lignes de contours plateau
     int largeur_totale_plateau = plateau.largeur + 3; //largeur totale = largeur + lignes numeros + 2 colonnes de contours plateau
 
-    
+    //parcours le plateau
     for(i=0; i<hauteur_totale_plateau; i++)
     {
         for(j=0; j<largeur_totale_plateau; j++)
@@ -155,7 +155,7 @@ void affichage_plateau(Tableau2D plateau, Score score)
                 printf("%c%c",COTE_TRANSVERSAL,COTE_TRANSVERSAL);
             }
             
-            //Affichage du contenu du plateau
+            //Affichage du contenu du plateau de jeu
             else
             {
                 if(plateau.tableau[i-2][j-2] == CASE_VIDE_JOUABLE)
@@ -266,6 +266,7 @@ void empilement_lignes(Tableau2D plateau,int num_ligne, Score* score)
 
     for(i=num_ligne; i >= 0; i--)
     {
+        //verif si le score doit etre calculer (seuelment pour la premeire ligne annuler)
         if(i == num_ligne)
         {
             score->validite = 1;
@@ -278,6 +279,7 @@ void empilement_lignes(Tableau2D plateau,int num_ligne, Score* score)
         
         annuler_ligne(plateau, i, score); //annulation de la ligne + sans calcul score
         
+        //si i ≠ 0 car sinon on annule juste la ligne, pas de remplacment a prévoir
         if(i != 0)
         {
             //copie de la ligne precedente dans la ligne actuelle
@@ -291,7 +293,7 @@ void empilement_lignes(Tableau2D plateau,int num_ligne, Score* score)
                     }
                     else
                     {
-                        plateau.tableau[i-1][j] = 3;
+                        plateau.tableau[i-1][j] = 3; //case qui n'ont pas pu descendre
                     }                
                 }
             }

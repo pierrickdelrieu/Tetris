@@ -60,7 +60,7 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
                 }
                 else if(cara == '#') //délimitation blocs
                 {
-                    tableau[i][j] = DELIMITATION_BLOC;
+                    tableau[i][j] = DELIMITATION_BLOC; //remplacement des # du fichier csv (taille réelle)
                 }
                 
                 j++; //si ajout alors on incrémente le numero de colonne
@@ -82,9 +82,10 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
 int hauteur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS])
 {
     int hauteur = 1; //declaration dans la fonction car besoin d'etre initialisé a 1
+
     // Calcul rang du bloc dans le tableau
-    int rang = 0;
-    int num_bloc_copie = num_bloc;
+    int rang = 0; //initialisation
+    int num_bloc_copie = num_bloc; //création d'un copie du numéro du bloc pour le calcul du rang
     while(num_bloc_copie > 10) //le tableau dans le fichier csv est composer de 3 rang de 10 blocs max
     {
         rang++;
@@ -93,7 +94,7 @@ int hauteur_bloc(int num_bloc, int tab_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOC
     
 
     //Calcul coordonnées du bloc dans le tableau
-    int x = ((num_bloc-1) % 10) * 5;
+    int x = ((num_bloc-1) % 10) * 5; //formule des coordonnées trouvé avec excel en testant
     int y = 4 + (5*rang) ;
 
     while((hauteur<=TAILLE_MAX_BLOC) && (tab_blocs[y-hauteur][x] != DELIMITATION_BLOC)) //condition d'arret
@@ -259,7 +260,7 @@ void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_bloc
         }
         if(cpt != 0)
         {
-            printf("\n");
+            printf("\n"); //retour a la ligne
         }
     }
 
@@ -285,6 +286,7 @@ void affichage_3_blocs(int num_bloc1, int num_bloc2, int num_bloc3, int tab_bloc
     desalocation_struct_bloc(bloc2);
     desalocation_struct_bloc(bloc3);
 }
+
 
 int affichage_plateau_blocs_politique1(Tableau2D plateau, Score score, int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], int nombre_blocs)
 {
@@ -345,7 +347,7 @@ int affichage_plateau_blocs_politique1(Tableau2D plateau, Score score, int table
         
     
 
-    }while ((choix_num_bloc == 0) || (choix_num_bloc == 40) || (erreur == 1));
+    }while ((choix_num_bloc == 0) || (choix_num_bloc == 40) || (erreur == 1)); //condition d'arret
     
     return (choix_num_bloc);
 }
@@ -389,12 +391,12 @@ int affichage_plateau_blocs_politique2(Tableau2D plateau, Score score, int table
         scanf("%d", &choix_num_bloc);
         fflush(stdin);
 
+        //repérage si il y a ne erreur
         if((choix_num_bloc != num_bloc1) && (choix_num_bloc != num_bloc2) && (choix_num_bloc != num_bloc3))
         {
             erreur = 1;
             supr_console();
         }
-    
 
     }while (erreur == 1);
     

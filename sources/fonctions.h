@@ -34,7 +34,7 @@ typedef struct
     int x;
     int y;
 } Coord;
-typedef struct
+typedef struct //structure pour le plateau de jeu et pour les blocs
 {
     int** tableau;
     int hauteur;

@@ -11,9 +11,9 @@
 
 void ecran_accueil(void)
 {
-    int choix;
+    int choix; //saisie par l'utilisateur
     int cpt = 0;
-    int valide;
+    int valide; //verification si il y a une erreur
     
     do
     {
@@ -45,7 +45,7 @@ void ecran_accueil(void)
         do
         {
             printf("                                        - REGLE DU JEU -                                            \n\n\n\n");
-            printf("Le jeu Tetris se joue sur un plateau (cercle, losange ou triangle) de minimum 19 cases de largeur.\n\nLe but du jeu est de placer des formes sur le plateau afin d’annuler des lignes et des colonnes.\nSi une ligne est annulée alors tous les cases pleines du dessus descende d’un cran\n(il est possible d’annuler plusieurs lignes en même temps).\n\nUne ligne ou une colonne et annulé si et seulement si suite au placement d’une forme la ligne est complète\n(si la descente des blocs remplies une lignes ou une colonne, celle-ci n’est pas annulé).\n\nLe score correspond donc au nombres de case annulé.\n\nVous aurez seulement trois possibilité de saisie des coordonnées du blocs a placé une fois celui-ci choisie\nAttention, ces trois essai dépassé, la partie se terminera et vous aurez atteint votre score maximal.\n\n\n                                                                                          Soyer fort ;)\n\n\n\n");
+            printf("Le jeu Tetris se joue sur un plateau (cercle, losange ou triangle) de minimum 19 cases de largeur.\n\nLe but du jeu est de placer des formes sur le plateau afin d’annuler des lignes et des colonnes.\nSi une ligne est annulée alors toutes les cases pleines du dessus descende d’un cran\n(il est possible d’annuler plusieurs lignes en même temps).\n\nUne ligne ou une colonne est annulé si et seulement si suite au placement d’une forme la ligne ou la colonne est complète\n(si la descente des blocs remplies une lignes ou une colonne, celle-ci n’est pas annulé).\n\nLe score correspond donc au nombres de case annulé.\n\nVous aurez seulement trois possibilité de saisie des coordonnés du blocs a placer une fois celui-ci choisie\nAttention, ces trois essais dépassés, la partie se terminera et vous aurez atteint votre score maximal.\n\n\n                                                                                          Soyer fort ;)\n\n\n\n");
             
             printf("Taper 1 pour commencer a jouer : ");
             scanf("%d",&choix);

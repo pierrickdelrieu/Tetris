@@ -37,25 +37,19 @@ void creation_plateau_blocs(int *** plateau_bloc, int choix_forme);
 
 - placement blocs sur le plateau
 
+- vérification de la validité d'un bloc
+
+- calcul du score
+
+- empilement lignes
+
 FAIT
 
 
 
 ROMAIN
--    suppression console
+- suppression console
+
+- Makefile
 
 FAIT
-
-
-
-
-
-
-
-
-A FAIRE
-- verification de la validité d'un bloc
-
-- calcul du score
-
-- descendre ligne
