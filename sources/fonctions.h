@@ -9,9 +9,7 @@
 #ifndef fonctions_h
 #define fonctions_h
 
-
-//On établie que la taille de l'écran fait 100 cara x 70 cara
-
+//Bibliothèques
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -29,7 +27,7 @@
 
 
 
-//..................GENERAL................... (fonctions usuels)
+//..................GENERAL................... (fonctions usuelles)
 #define NOMBRE_ESSAI_SAISIE 3 //nombre d'essai de saisie des coordonnées avant que la boucle de jeu quitte
 typedef struct
 {

@@ -21,7 +21,7 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
     {
         fichier_blocs = fopen("blocs/blocs_cercle.csv", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
     }
-    else if(forme == PLATEAU_LOSANGE)//Losange
+    else if(forme == PLATEAU_LOSANGE) //Losange
     {
         fichier_blocs = fopen("blocs/blocs_losange.csv", "r"); //"r" correspond a la lecture seul (permet de limiter les erreurs) - fopen renvoie un pointeur sur le fichier
     }
@@ -31,7 +31,7 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
     }
     
     
-    
+
     //tester l'ouverture du fichier
     if(fichier_blocs != NULL)
     {
