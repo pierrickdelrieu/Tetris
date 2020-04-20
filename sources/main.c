@@ -9,8 +9,7 @@
 #include "fonctions.h"
 
 
-int main()
-{
+int main() {
     Tableau2D plateau;
     int taille; //taille plateau saisie par l'utilisateur
     int choix_forme; //choix de la forme du plateau de jeu
@@ -18,9 +17,9 @@ int main()
     int tableau_blocs[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS];
     int nombre_blocs; //nombre de blocs dans le plateau en fonction de la forme choisie
 
-    
-                    //....................................MENU....................................
-    
+
+    //....................................MENU....................................
+
     //Saisie utilisateur (sécurisé) 
     supr_console();
     ecran_accueil(); //affichage commencer a jouer ou regles du jeu
@@ -29,34 +28,31 @@ int main()
     choix_politique_suggestion_blocs(&choix_politique_blocs); //choix de la taille du plateau de jeu
 
     //Allocation et initialisation en fonction du choix de la forme du plateau
-    if(choix_forme == PLATEAU_CERCLE) //cercle
+    if (choix_forme == PLATEAU_CERCLE) //cercle
     {
         plateau.tableau = creation_plateau_cercle(taille);
         plateau.hauteur = taille;
         plateau.largeur = taille;
         nombre_blocs = 32;
-    }
-    else if (choix_forme == PLATEAU_LOSANGE) //losange
+    } else if (choix_forme == PLATEAU_LOSANGE) //losange
     {
         plateau.tableau = creation_plateau_losange(taille);
         plateau.hauteur = taille;
         plateau.largeur = taille;
         nombre_blocs = 34;
-    }
-    else //triangle
+    } else //triangle
     {
         plateau.tableau = creation_plateau_triangle(taille);
-        plateau.hauteur = (taille/2) + 1;
+        plateau.hauteur = (taille / 2) + 1;
         plateau.largeur = taille;
         nombre_blocs = 31;
     }
 
 
-    
     creation_tableau_blocs(tableau_blocs, choix_forme); //creation du tableau de blocs a partir du fichier csv
-    
-    
-                    //....................................JEU....................................
+
+
+    //....................................JEU....................................
 
     //Initialisation
     int choix_num_bloc; //saisie utilisateur choix du numero du bloc
@@ -68,72 +64,63 @@ int main()
     score.valeur = 0; //initialisation du score
 
     //Boucle de jeu
-    do
-    {
+    do {
         continuer = 0; //initialisation de la condition d'arret
 
         //affichage des blocs + plateau
-        if(choix_politique_blocs == 1) //affichage de l'ensemble des blocs
+        if (choix_politique_blocs == 1) //affichage de l'ensemble des blocs
         {
             choix_num_bloc = affichage_plateau_blocs_politique1(plateau, score, tableau_blocs, nombre_blocs);
-        }
-        else if(choix_politique_blocs == 2) //affichage de trois blocs aléatoire
+        } else if (choix_politique_blocs == 2) //affichage de trois blocs aléatoire
         {
             choix_num_bloc = affichage_plateau_blocs_politique2(plateau, score, tableau_blocs, nombre_blocs);
         }
 
         //Saisie coordonnée bloc
-        do
-        {
-            continuer ++;
+        do {
+            continuer++;
 
-            if(continuer > 1)
-            {
-                printf("\nERREUR DE SAISIE %d",continuer-1);
+            if (continuer > 1) {
+                printf("\nERREUR DE SAISIE %d", continuer - 1);
             }
 
             saisie_coord_bloc(&choix_coord, plateau, choix_num_bloc, tableau_blocs);
-        }while((continuer < NOMBRE_ESSAI_SAISIE) && (validite_coord_bloc(choix_coord, choix_num_bloc, tableau_blocs, plateau) == 0)); 
+        } while ((continuer < NOMBRE_ESSAI_SAISIE) && (validite_coord_bloc(choix_coord, choix_num_bloc, tableau_blocs, plateau) == 0));
 
         supr_console();
 
 
         //Placement du bloc
-        if(validite_coord_bloc(choix_coord, choix_num_bloc, tableau_blocs, plateau) == 1)
-        {
+        if (validite_coord_bloc(choix_coord, choix_num_bloc, tableau_blocs, plateau) == 1) {
             placement_bloc(choix_num_bloc, tableau_blocs, plateau, choix_coord);
 
             //gestion de la descende et la suppresion des lignes
-            for(cpt=0; cpt<plateau.hauteur; cpt++)
-            {
-                if(etat_ligne(plateau, cpt) == 1) //la ligne cpt est pleine
+            for (cpt = 0; cpt < plateau.hauteur; cpt++) {
+                if (etat_ligne(plateau, cpt) == 1) //la ligne cpt est pleine
                 {
-                    empilement_lignes(plateau,cpt,&score); //empilement + annulation de la ligne
+                    empilement_lignes(plateau, cpt, &score); //empilement + annulation de la ligne
                 }
             }
 
             //gestion de la suppresion des colonnes
-            for(cpt=0; cpt<plateau.largeur; cpt++)
-            {
-                if(etat_colonne(plateau, cpt) == 1) //la colonne cpt est pleine
+            for (cpt = 0; cpt < plateau.largeur; cpt++) {
+                if (etat_colonne(plateau, cpt) == 1) //la colonne cpt est pleine
                 {
-                    annuler_colonne(plateau,cpt,&score);
+                    annuler_colonne(plateau, cpt, &score);
                 }
             }
 
             affichage_plateau(plateau, score);
-        }
-        else
-        {
+        } else {
             continuer = 4; // si le bloc n'est pas valide au troiseme coup a lors on quitte la boucle de jeu 
         }
-        
+
         supr_console();
 
-    }while(continuer <= NOMBRE_ESSAI_SAISIE);
+    } while (continuer <= NOMBRE_ESSAI_SAISIE);
 
 
-                    //...............................AFFICHAGE.RESULTAT...............................
+    //...............................AFFICHAGE.RESULTAT...............................
 
     printf("          ................................................................................          \n");
     printf("                                          FIN DE LA PARTIE                                          \n");
@@ -141,7 +128,7 @@ int main()
     printf("                              Vous avez dépassé le nombres d'essai\n\n\n");
     printf("                                     Votre score est - %d\n\n\n", score.valeur);
     printf("       Merci pour votre participation\n\n");
-    
+
 
 
 
@@ -149,7 +136,7 @@ int main()
 
 
     //Desalocation de l'espace mémoire dynamique
-    desalocation_tableau2D(plateau.tableau,plateau.hauteur);
- 
+    desalocation_tableau2D(plateau.tableau, plateau.hauteur);
+
     return 0;
 }

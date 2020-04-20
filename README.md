@@ -52,4 +52,8 @@ ROMAIN
 
 - Makefile
 
+- Nettoyage
+
+- Modification mineurs
+
 FAIT
