@@ -1,5 +1,5 @@
 //
-//  general.c
+//  fonctions_usuelles.c
 //  Tetris
 //
 //  Created by Pierrick Delrieu on 02/04/2020.

@@ -6,8 +6,6 @@ Jeu similaire au jeu Tetris.
 
 
 PIERRICK
--    Création des 4 fichiers xsv avec les formes représentées par des 1(case pleine) et des 0 (case vide)
-
 -    Vérification état ligne renvoie 0 ou 1 si elle est pleine
 int etat_ligne(int numero_ligne);
 

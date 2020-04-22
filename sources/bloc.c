@@ -72,7 +72,10 @@ void creation_tableau_blocs(int tableau[HAUTEUR_TAB_BLOCS][LARGEUR_TAB_BLOCS], i
     }
     else //le pointeur sur le fichier est toujours = NULL soit le fichier n'a pas était ouvert
     {
-        printf("Erreur au niveau de l'ouverture du fichiers contenants tous les blocs\n");
+        supr_console();
+        printf("Erreur au niveau de l'ouverture du fichier .csv contenants tous les blocs\n");
+        printf("Le programme n'a pas les autorisations nécessaire pour acceder aux fichiers de votre ordinateur\n");
+        printf("Gerer ceci dans les préférence de votre ordinateur\n");
         exit(0); //Fin du programme
     }
 }

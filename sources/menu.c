@@ -33,7 +33,8 @@ void ecran_accueil(void)
         }
         
         printf("     SAISIR : ");
-        valide = scanf("%d",&choix); // saisie de 1 ou 2
+        fflush(stdin);//suprimer le buffer d'entré après avoir saisie la valeur pour éviter de faire crasher le programme (boucle infinie)
+        valide = scanf("%d",&choix); // saisie de 1 ou 2 (scanf retourne 1 si type saisie est valide)
         fflush(stdin);//suprimer le buffer d'entré après avoir saisie la valeur pour éviter de faire crasher le programme (boucle infinie)
         cpt++;
         supr_console();
