@@ -104,6 +104,7 @@ int main()
             placement_bloc(choix_num_bloc, tableau_blocs, plateau, choix_coord);
 
             //gestion de la descende et la suppresion des lignes
+            //la suppresion ligne est privilégié par rapport a la suppression colonne, on le mes donc avant
             for(cpt=0; cpt<plateau.hauteur; cpt++)
             {
                 if(etat_ligne(plateau, cpt) == 1) //la ligne cpt est pleine

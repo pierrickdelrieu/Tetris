@@ -1,4 +1,3 @@
-CC=gcc
 SOURCES=./sources/*.c
 OUTPUT=./
 
