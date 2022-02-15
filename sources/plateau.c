@@ -128,7 +128,7 @@ void affichage_plateau(Tableau2D plateau, Score score) {
                 } else if (plateau.tableau[i - 2][j - 2] == CASE_VIDE_INJOUABLE) {
                     printf("%c ", ESPACE);
                 } else if (plateau.tableau[i - 2][j - 2] == CASE_PLEINE) {
-                    printf("◼︎ "); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
+                    printf("◼︎"); //sur mac étant pas possible d'afficher les codes ascii au dessus de 127, on affiche un carré brut
                 }
             }
         }
